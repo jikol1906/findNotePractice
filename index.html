@@ -7,13 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Note Practicer</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
     <style>
-        * {
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+* {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
         }
+
+        .highlight {
+            color: #ffda3e;
+        }
+
 
         html {
             background-color: #0ea389;
@@ -23,10 +36,19 @@
 
         body {
             height: 100vh;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
         }
 
         #box {
@@ -45,7 +67,12 @@
             color: white;
             background-color: #52a5d6;
             border-radius: 5px;
-            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        #start-button:hover {
+            filter:brightness(1.1);
         }
 
         #stop-button {
@@ -83,6 +110,8 @@
             outline: none;
             opacity: 0.7;
             -webkit-transition: .2s;
+            -webkit-transition: opacity .2s;
+            -o-transition: opacity .2s;
             transition: opacity .2s;
         }
 
@@ -124,13 +153,17 @@
     <script>
         const notesWithSharps = "A A# B C C# D D# E F F# G G#".split(' ')
         const notesWithFlats = "A Bb B C Db D Eb E F Gb G Ab".split(' ')
+        const naturalNotes = notesWithSharps.filter(n => !n.includes('#'));
+        let includeAccidentals = false;
+        
+
         const notes = document.getElementById("notes");
         const startButton = document.getElementById("start-button");
         const stopButton = document.getElementById("stop-button");
         const range = document.getElementById("range");
         const timeBetween = document.getElementById("time-between");
         const box = document.getElementById("box");
-        const synth = new Tone.Synth().toDestination();
+        let synth;
         let intervalId;
         let timeBetweenInSeconds = 5000;
         range.value = 50;
@@ -140,6 +173,7 @@
             box.style.display = 'none';
             stopButton.style.display = 'block';
             Tone.start().then(() => {
+                synth = new Tone.Synth().toDestination();
                 intervalId = setInterval(() => {
                     nextNote()
                 }, timeBetweenInSeconds)
@@ -155,7 +189,7 @@
             clearInterval(intervalId);
         })
 
-        range.addEventListener('input', e => {            
+        range.addEventListener('input', e => {
             let value = e.target.value / 10;
             timeBetweenInSeconds = value * 1000
             timeBetween.textContent = 'Time between notes: ' + (value === 10 ? value : value.toFixed(1)) + ' seconds'
@@ -174,7 +208,7 @@
         function nextNote() {
             const note = getRandomNote();
             synth.triggerAttackRelease(note + "4", "4n");
-            notes.textContent = note + " on the " + getStringNumber(getRandomIntInclusive(1, 6)) + " string"
+            notes.innerHTML = '<span class="highlight">' + note + "</span> on the " + '<span class="highlight">' + getStringNumber(getRandomIntInclusive(1, 6)) + '</span>' + " string"
 
         }
 
