@@ -5,17 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Note Practicer</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: sans-serif;
         }
 
         html {
             background-color: #0ea389;
+            font-family: 'Nanum Gothic', sans-serif;
 
         }
 
@@ -93,14 +95,14 @@
             appearance: none;
             width: 25px;
             height: 25px;
-            background: #0ea389;
+            background: #52a5d6;
             cursor: pointer;
         }
 
         .slider::-moz-range-thumb {
             width: 25px;
             height: 25px;
-            background: #0ea389;
+            background: #52a5d6;
             cursor: pointer;
         }
     </style>
@@ -113,7 +115,7 @@
     <div id="box">
         <button id="start-button">Start</button>
         <p id="time-between">Time between notes: 5.0 seconds</p>
-        <input type="range" min="1" max="100" value="50" class="slider" id="range">
+        <input type="range" min="10" max="100" value="50" step="5" class="slider" id="range">
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.9/Tone.js"
