@@ -63,7 +63,7 @@
         #start-button {
             padding: 2rem 4rem;
             margin-bottom: 3rem;
-
+            text-transform: uppercase;
             color: white;
             background-color: #52a5d6;
             border-radius: 5px;
@@ -73,6 +73,7 @@
 
         #start-button:hover {
             filter: brightness(1.1);
+
         }
 
         #stop-button {
@@ -134,6 +135,12 @@
             background: #52a5d6;
             cursor: pointer;
         }
+
+        @media only screen and (max-width: 600px) {
+            html {
+                font-size: 70%;
+            }
+        }
     </style>
 </head>
 
@@ -161,7 +168,7 @@
         const range = document.getElementById("range");
         const timeBetween = document.getElementById("time-between");
         const box = document.getElementById("box");
-        let synth;
+        const synth = new Tone.Synth().toDestination();
         let intervalId;
         let timeBetweenInSeconds = 5000;
         range.value = 50;
@@ -171,7 +178,6 @@
             box.style.display = 'none';
             stopButton.style.display = 'block';
             Tone.start().then(() => {
-                synth = new Tone.Synth().toDestination();
                 intervalId = setInterval(() => {
                     nextNote()
                 }, timeBetweenInSeconds)
