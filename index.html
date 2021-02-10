@@ -57,7 +57,7 @@
 
         #notes {
             color: white;
-            font-size: clamp(2rem, 9vw, 6rem);
+            font-size: clamp(1.5rem, 9vw, 6rem);
         }
 
         #start-button {
@@ -208,7 +208,7 @@
         function nextNote() {
             const note = getRandomNote();
             synth.triggerAttackRelease(note + "4", "4n");
-            notes.innerHTML = '<span class="highlight">' + note + "</span> on the " + '<span class="highlight">' + getStringNumber(getRandomIntInclusive(1, 6)) + '</span>' + " string"
+            notes.innerHTML = '<span class="highlight">' + note + '</span> <span style="font-size:2.5rem"> on the </span> ' + '<span class="highlight">' + getStringNumber(getRandomIntInclusive(1, 6)) + '</span>' + ' <span style="font-size:2.5rem"> string </span>'
 
         }
 
