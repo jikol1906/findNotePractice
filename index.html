@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Note Practicer</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
     <style>
         /*
@@ -24,6 +26,12 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --small-space:1rem;
+            --medium-space:2.5rem;
+            --large-space:4rem;
+        }
+
         .highlight {
             color: #ffda3e;
         }
@@ -32,11 +40,11 @@
         html {
             background-color: #0ea389;
             font-family: 'Nanum Gothic', sans-serif;
-
+            height: 100vh;
         }
 
         body {
-            height: 100vh;
+            height: 100%;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -58,16 +66,25 @@
 
         #notes {
             color: white;
+
             font-size: clamp(1.5rem, 9vw, 6rem);
         }
 
+        button {
+            font-size: 2rem;
+            cursor: pointer;
+            border: none;
+            letter-spacing: .2rem;
+        }
+
+
         #start-button {
             padding: 2rem 4rem;
-            margin-bottom: 3rem;
+            margin-bottom: var(--medium-space);
             text-transform: uppercase;
             color: white;
             background-color: #52a5d6;
-            border-radius: 5px;
+            border-radius: 10px;
             -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         }
@@ -90,14 +107,8 @@
 
         #time-between {
             color: white;
-            margin-bottom: 2rem;
+            margin-bottom: var(--medium-space);
             font-size: 1.2rem;
-        }
-
-        button {
-            font-size: 2rem;
-            cursor: pointer;
-            border: none;
         }
 
         .slidecontainer {
@@ -106,6 +117,7 @@
 
         .slider {
             -webkit-appearance: none;
+            border-radius: 50px;
             width: 100%;
             height: 25px;
             background: #d3d3d3;
@@ -128,9 +140,11 @@
             height: 25px;
             background: #52a5d6;
             cursor: pointer;
+            border-radius: 50px;
         }
 
         .slider::-moz-range-thumb {
+            border-radius: 50px;
             width: 25px;
             height: 25px;
             background: #52a5d6;
@@ -216,7 +230,6 @@
             const note = getRandomNote();
             synth.triggerAttackRelease(note + "4", "4n");
             notes.innerHTML = '<span class="highlight">' + note + '</span> <span style="font-size:2.5rem"> on the </span> ' + '<span class="highlight">' + getStringNumber(getRandomIntInclusive(1, 6)) + '</span>' + ' <span style="font-size:2.5rem"> string </span>'
-
         }
 
         function getRandomNote() {
