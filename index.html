@@ -173,10 +173,12 @@
         let intervalId;
         let timeBetweenInSeconds = 5000;
         range.value = 50;
+        notes.style.display = 'none';
 
 
         startButton.addEventListener('click', _ => {
             box.style.display = 'none';
+            notes.style.display = 'block';
             stopButton.style.display = 'block';
             Tone.start().then(() => {
                 intervalId = setInterval(() => {
@@ -190,7 +192,7 @@
         stopButton.addEventListener('click', _ => {
             box.style.display = 'block';
             stopButton.style.display = 'none';
-            notes.textContent = '';
+            notes.style.display = 'none';
             clearInterval(intervalId);
         })
 
