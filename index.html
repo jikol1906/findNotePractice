@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        html {
+            background-color: #0ea389;
+
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #notes {
+            color: white;
+            font-size: clamp(2rem,2.5vw,9rem);
+        }
+
+        #start-button {
+            padding: 2rem 4rem;
+
+
+            color: white;
+            background-color: #52a5d6;
+            border-radius: 5px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        #stop-button {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 20px;
+            background-color: transparent;
+            padding: 1rem;
+            font-size: 4rem;
+            opacity: .5;
+        }
+
+        button {
+            font-size: 2rem;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="notes"></h1>
+    <button id="stop-button">&times</button>
+    <button id="start-button">Start</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.9/Tone.js"
+        integrity="sha512-nUjml8mN4CNYqBAy0ndDrd8pJV/eTtBNDsnvNtPqozx9/BccUeWSoKW14qWkQUnhuh8E3m+yra3qdzM68lqPEQ=="
+        crossorigin="anonymous"></script>
+    <script>
+        const notesWithSharps = "A A# B C C# D D# E F F# G G#".split(' ')
+        const notesWithFlats = "A Bb B C Db D Eb E F Gb G Ab".split(' ')
+        const notes = document.getElementById("notes");
+        const startButton = document.getElementById("start-button");
+        const stopButton = document.getElementById("stop-button");
+        const synth = new Tone.Synth().toDestination();
+        let intervalId;
+
+
+        startButton.addEventListener('click', _ => {
+            startButton.style.display = 'none';
+            stopButton.style.display = 'block';
+            Tone.start().then(() => {
+                intervalId = setInterval(() => {
+                    nextNote()
+                }, 4000)
+                nextNote()
+            })
+
+        })
+
+        stopButton.addEventListener('click', _ => {
+            startButton.style.display = 'block';
+            stopButton.style.display = 'none';
+            notes.textContent = '';
+            clearInterval(intervalId);
+        })
+
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+        }
+
+        function getRandomBoolean() {
+            return Math.random() >= 0.5;
+        }
+
+        function nextNote() {
+            const note = getRandomNote();
+            synth.triggerAttackRelease(note + "4", "4n");
+            notes.textContent = note + " on the " + getStringNumber(getRandomIntInclusive(1, 6)) + " string"
+
+        }
+
+        function getRandomNote() {
+            return getRandomBoolean() ? notesWithSharps[getRandomIntInclusive(0, 11)] : notesWithFlats[getRandomIntInclusive(0, 11)];
+        }
+
+        function getStringNumber(number) {
+
+            switch (number) {
+                case 1:
+                    return '1st'
+                case 2:
+                    return '2nd'
+                case 3:
+                    return '3rd'
+                default:
+                    return number + 'th'
+            }
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
