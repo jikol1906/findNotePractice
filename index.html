@@ -9,18 +9,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
     <style>
-/*
+        /*
 * Prefixed by https://autoprefixer.github.io
 * PostCSS: v7.0.29,
 * Autoprefixer: v9.7.6
 * Browsers: last 4 version
 */
 
-* {
+        * {
             margin: 0;
             padding: 0;
             -webkit-box-sizing: border-box;
-                    box-sizing: border-box;
+            box-sizing: border-box;
         }
 
         .highlight {
@@ -41,14 +41,14 @@
             display: flex;
             -webkit-box-orient: vertical;
             -webkit-box-direction: normal;
-                -ms-flex-direction: column;
-                    flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
             -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                    justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
             -webkit-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
         }
 
         #box {
@@ -68,11 +68,11 @@
             background-color: #52a5d6;
             border-radius: 5px;
             -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         }
 
         #start-button:hover {
-            filter:brightness(1.1);
+            filter: brightness(1.1);
         }
 
         #stop-button {
@@ -147,15 +147,13 @@
         <input type="range" min="10" max="100" value="50" step="5" class="slider" id="range">
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.9/Tone.js"
-        integrity="sha512-nUjml8mN4CNYqBAy0ndDrd8pJV/eTtBNDsnvNtPqozx9/BccUeWSoKW14qWkQUnhuh8E3m+yra3qdzM68lqPEQ=="
-        crossorigin="anonymous"></script>
+    <script src="tone.js"></script>
     <script>
         const notesWithSharps = "A A# B C C# D D# E F F# G G#".split(' ')
         const notesWithFlats = "A Bb B C Db D Eb E F Gb G Ab".split(' ')
         const naturalNotes = notesWithSharps.filter(n => !n.includes('#'));
         let includeAccidentals = false;
-        
+
 
         const notes = document.getElementById("notes");
         const startButton = document.getElementById("start-button");
