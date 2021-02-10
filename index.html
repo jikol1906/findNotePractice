@@ -18,18 +18,15 @@
 * Autoprefixer: v9.7.6
 * Browsers: last 4 version
 */
-
         * {
             margin: 0;
             padding: 0;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
         }
 
         :root {
-            --small-space:1rem;
-            --medium-space:2.5rem;
-            --large-space:4rem;
+            --small-space: 1rem;
+            --medium-space: 2.5rem;
+            --large-space: 4rem;
         }
 
         .highlight {
@@ -60,8 +57,12 @@
             align-items: center;
         }
 
-        #box {
+        #menu {
             text-align: center;
+        }
+
+        #game {
+            display: none;
         }
 
         #notes {
@@ -109,6 +110,15 @@
             color: white;
             margin-bottom: var(--medium-space);
             font-size: 1.2rem;
+            
+        }
+
+        #time-left {
+            height: 2rem;
+            width:30rem;
+            background-color: #52a5d6;
+            margin: 0 auto;
+            transform-origin: left;
         }
 
         .slidecontainer {
@@ -156,14 +166,29 @@
                 font-size: 70%;
             }
         }
+
+        @keyframes shrink {
+            from {
+                opacity: 1;
+                transform: scaleX(1)
+            }
+
+            to {
+                opacity: .2;
+                transform: scaleX(0);
+            }
+        }
     </style>
 </head>
 
 <body>
+    <div id="game">
+        <h1 id="notes"></h1>
+        <div id="time-left"></div>
+    </div>
 
-    <h1 id="notes"></h1>
     <button id="stop-button">&times</button>
-    <div id="box">
+    <div id="menu">
         <button id="start-button">Start</button>
         <p id="time-between">Time between notes: 5.0 seconds</p>
         <input type="range" min="10" max="100" value="50" step="5" class="slider" id="range">
@@ -182,17 +207,18 @@
         const stopButton = document.getElementById("stop-button");
         const range = document.getElementById("range");
         const timeBetween = document.getElementById("time-between");
-        const box = document.getElementById("box");
+        const timeLeft = document.getElementById("time-left");
+        const menu = document.getElementById("menu");
+        const game = document.getElementById("game");
         const synth = new Tone.Synth().toDestination();
         let intervalId;
         let timeBetweenInSeconds = 5000;
         range.value = 50;
-        notes.style.display = 'none';
 
 
         startButton.addEventListener('click', _ => {
-            box.style.display = 'none';
-            notes.style.display = 'block';
+            menu.style.display = 'none';
+            game.style.display = 'block';
             stopButton.style.display = 'block';
             Tone.start().then(() => {
                 intervalId = setInterval(() => {
@@ -204,9 +230,9 @@
         })
 
         stopButton.addEventListener('click', _ => {
-            box.style.display = 'block';
+            menu.style.display = 'block';
+            game.style.display = '';
             stopButton.style.display = 'none';
-            notes.style.display = 'none';
             clearInterval(intervalId);
         })
 
@@ -228,6 +254,7 @@
 
         function nextNote() {
             const note = getRandomNote();
+            timeLeft.style.animation = 'shrink '+timeBetweenInSeconds+'ms linear infinite';
             synth.triggerAttackRelease(note + "4", "4n");
             notes.innerHTML = '<span class="highlight">' + note + '</span> <span style="font-size:2.5rem"> on the </span> ' + '<span class="highlight">' + getStringNumber(getRandomIntInclusive(1, 6)) + '</span>' + ' <span style="font-size:2.5rem"> string </span>'
         }
@@ -237,7 +264,6 @@
         }
 
         function getStringNumber(number) {
-
             switch (number) {
                 case 1:
                     return '1st'
