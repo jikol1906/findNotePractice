@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .staff {
+            --line-distance: 1.4rem;
+            --line-width: 2px;
+
+            position: relative;
+            width: 30rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .line {
+            background-color: black;
+            height: var(--line-width);
+            margin-bottom: var(--line-distance);
+            width: 100%;
+        }
+
+        .ledger-line {
+            width: 3rem;
+            visibility: hidden;
+        }
+
+        #staff-note {
+            position: absolute;
+            bottom: calc((var(--line-width) + var(--line-distance)) / 2 * var(--position));
+            width: 1.7rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        :root {
+            --small-space: 1rem;
+            --medium-space: 2.5rem;
+            --large-space: 4rem;
+        }
+
+        .highlight {
+            color: #ffda3e;
+        }
+
+
+        html {
+            background-color: #0ea389;
+            font-family: 'Nanum Gothic', sans-serif;
+            height: 100vh;
+        }
+
+        body {
+            height: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="staff">
+        <img src="note.svg" alt="note" id="staff-note" style="--position:10">
+        <div class="line ledger-line"></div>
+        <div class="line ledger-line"></div>
+        <div class="line ledger-line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line ledger-line"></div>
+        <div class="line ledger-line"></div>
+        <div class="line ledger-line"></div>
+    </div>
+
+    <script>
+        const staffNote = document.getElementById("staff-note");
+        const ledgerLines = Array.from(document.getElementsByClassName("ledger-line"));
+
+        function placeNoteOnStaffAtPosition(position) {
+            position = Math.min(22,Math.max(1,position))
+            staffNote.style.setProperty('--position', position)
+            placeLedgerLines(position);
+        }
+
+        function placeLedgerLines(position) {
+            ledgerLines.forEach(l => l.style.visibility = 'hidden')
+            if (position === 22 || position == 21) {
+                showLedgerLines(3, true)
+            } else if (position === 20 || position === 19) {
+                showLedgerLines(2, true)
+            } else if (position === 18 || position === 17) {
+                showLedgerLines(1, true)
+            } else if (position === 5 || position === 4) {
+                showLedgerLines(1, false)
+            } else if (position === 3 || position === 2) {
+                showLedgerLines(2, false)
+            } else if (position === 1) {
+                showLedgerLines(3, false)
+            }
+        }
+
+        function showLedgerLines(amount, isTopLedgerLines) {
+            const topThreeLedgerLines = ledgerLines.slice(0, 3).reverse();
+            const bottomThreeLedgerLines = ledgerLines.slice(3);
+
+            if (isTopLedgerLines) {
+                for (let i = amount - 1; i >= 0; i--) {
+                    topThreeLedgerLines[i].style.visibility = 'visible'
+                }
+            } else {
+                for (let i = amount - 1; i >= 0; i--) {
+                    bottomThreeLedgerLines[i].style.visibility = 'visible'
+                }
+            }
+        }
+
+        function generateNotes() {
+            const naturalNotes = "EFGABCD"
+            const notes = [];
+            let currentOctave = 3;
+
+            for (let i = 0; i <= 22; i++) {
+                
+            }
+        }
+
+    </script>
+</body>
+
+</html>
