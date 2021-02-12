@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
     <style>
         /*
 * Prefixed by https://autoprefixer.github.io
@@ -19,51 +20,20 @@
             padding: 0;
         }
 
-        .staff {
-            --line-distance: 1.4rem;
-            --line-width: 2px;
-
-            position: relative;
-            width: 30rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            align-items: center;
-        }
-
-        .line {
-            background-color: black;
-            height: var(--line-width);
-            margin-bottom: var(--line-distance);
-            width: 100%;
-        }
-
-        .ledger-line {
-            width: 3rem;
-            visibility: hidden;
-        }
-
-        #staff-note {
-            position: absolute;
-            bottom: calc((var(--line-width) + var(--line-distance)) / 2 * var(--position));
-            width: 1.7rem;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
         :root {
             --small-space: 1rem;
             --medium-space: 2.5rem;
             --large-space: 4rem;
         }
 
-        .highlight {
-            color: #ffda3e;
-        }
-
-
         html {
-            background-color: #0ea389;
+            background: #02AAB0;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #00CDAC, #02AAB0);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #00CDAC, #02AAB0);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
             font-family: 'Nanum Gothic', sans-serif;
             height: 100vh;
         }
@@ -84,42 +54,251 @@
             -ms-flex-align: center;
             align-items: center;
         }
+
+        .staff {
+            --line-distance: 1.4rem;
+            --line-width: 2px;
+
+            position: relative;
+            width: 30rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-bottom: var(--medium-space);
+        }
+
+        .line {
+            background-color: black;
+            height: var(--line-width);
+            margin-bottom: var(--line-distance);
+            width: 100%;
+        }
+
+        .highlight {
+            color: #ffda3e;
+        }
+
+
+        .ledger-line {
+            width: 3rem;
+            visibility: hidden;
+        }
+
+        #staff-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #staff-note {
+            position: absolute;
+            bottom: calc((var(--line-width) + var(--line-distance)) / 2 * var(--position));
+            width: 1.7rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #string-number {
+            color: white;
+            font-size: 5rem;
+        }
+
+        .highlight {
+            color: #ffda3e;
+        }
+
+        #menu {
+            text-align: center;
+        }
+
+
+        button {
+            font-size: 2rem;
+            cursor: pointer;
+            border: none;
+            letter-spacing: .2rem;
+        }
+
+
+        #time-between {
+            color: white;
+            margin-bottom: var(--medium-space);
+            font-size: 1.2rem;
+
+        }
+
+        #stop-button {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 20px;
+            background-color: transparent;
+            padding: 1rem;
+            font-size: 4rem;
+            opacity: .5;
+        }
+
+
+        #start-button {
+            padding: 2rem 4rem;
+            margin-bottom: var(--medium-space);
+            text-transform: uppercase;
+            color: white;
+            background-color: #52a5d6;
+            border-radius: 10px;
+            -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        .slidecontainer {
+            width: 100%;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            border-radius: 50px;
+            width: 100%;
+            height: 25px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            -webkit-transition: opacity .2s;
+            -o-transition: opacity .2s;
+            transition: opacity .2s;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #52a5d6;
+            cursor: pointer;
+            border-radius: 50px;
+        }
+
+        .slider::-moz-range-thumb {
+            border-radius: 50px;
+            width: 25px;
+            height: 25px;
+            background: #52a5d6;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
-    <div class="staff">
-        <img src="note.svg" alt="note" id="staff-note" style="--position:10">
-        <div class="line ledger-line"></div>
-        <div class="line ledger-line"></div>
-        <div class="line ledger-line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line ledger-line"></div>
-        <div class="line ledger-line"></div>
-        <div class="line ledger-line"></div>
+    <button id="stop-button">&times</button>
+    <div id="menu">
+        <button id="start-button">Start</button>
+        <p id="time-between">Time between notes: 5.0 seconds</p>
+        <input type="range" min="10" max="100" value="50" step="5" class="slider" id="range">
+    </div>
+    <div id="staff-container">
+        <div class="staff">
+            <img src="note.svg" alt="note" id="staff-note" style="--position:10">
+            <div class="line ledger-line"></div>
+            <div class="line ledger-line"></div>
+            <div class="line ledger-line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line ledger-line"></div>
+            <div class="line ledger-line"></div>
+            <div class="line ledger-line"></div>
+        </div>
+
+        <h1 id="string-number"></h1>
     </div>
 
+
+    <script src="tone.js"></script>
     <script>
         const staffNote = document.getElementById("staff-note");
+        const stringNumber = document.getElementById("string-number");
         const ledgerLines = Array.from(document.getElementsByClassName("ledger-line"));
+        const startButton = document.getElementById("start-button");
+        const stopButton = document.getElementById("stop-button");
+        const timeBetween = document.getElementById("time-between");
+        const staffContainer = document.getElementById("staff-container");
+        const range = document.getElementById("range");
 
-        const strings = [
-            'E5 F5 F#5 G5 G#5 A5 A#5 B5 C6 C#6 D6 D#6 E6 F6'.split(' '),
-            'B4 C5 C#5 D5 D#5 E5 F5 F#5 G5 G#5 A5 A#5 B5'.split(' '),
-            'G4 G#4 A4 A#4 B4 C5 C#5 D5 D#5 E5 F5 F#5 G5'.split(' '),
-            'D4 D#4 E4 F4 F#4 G4 G#4 A4 A#4 B4 C5 C#5 D5'.split(' '),
-            'A3 A#3 B3 C4 C#4 D4 D#4 E4 F4 F#4 G4 G#4 A4'.split(' '),
-            'E3 F3 F#3 G3 G#3 A3 A#3 B3 C4 C#4 D4 D#4 E4'.split(' ')
-        ]
+
+        const synth = new Tone.Synth();
+        const notes = generateNotes();
+        let timeBetweenInSeconds = 5000;
+        let intervalId;
+
+        range.value = 50;
+
+        range.addEventListener('input', e => {
+            let value = e.target.value / 10;
+            timeBetweenInSeconds = value * 1000
+            timeBetween.textContent = 'Time between notes: ' + (value === 10 ? value : value.toFixed(1)) + ' seconds'
+        })
+
+        startButton.addEventListener('click', _ => {
+            menu.style.display = 'none';
+            staffContainer.style.display = 'flex';
+            stopButton.style.display = 'block';
+            Tone.start().then(() => {
+                intervalId = setInterval(() => {
+                    nextNote()
+                }, timeBetweenInSeconds)
+                nextNote()
+            })
+
+        })
+
+        stopButton.addEventListener('click', _ => {
+            menu.style.display = 'block';
+            staffContainer.style.display = 'none';
+            stopButton.style.display = 'none';
+            clearInterval(intervalId);
+        })
+
 
         function placeNoteOnStaffAtPosition(position) {
             position = Math.min(22, Math.max(0, position))
             staffNote.style.setProperty('--position', position)
             placeLedgerLines(position);
+        }
+
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+        }
+
+
+
+        function nextNote() {
+            const randNote = notes[getRandomIntInclusive(0, 22)]
+            const numberOfStrings = randNote.canBePlayedOnStrings.length
+            console.log(randNote.canBePlayedOnStrings);
+            stringNumber.innerHTML = 'Play on ' + '<span class="highlight">' + getStringNumber(randNote.canBePlayedOnStrings[getRandomIntInclusive(0, numberOfStrings - 1)]) + '</span> string' + ' ' + randNote.note
+            placeNoteOnStaffAtPosition(randNote.position)
+        }
+
+        function getStringNumber(number) {
+            switch (number) {
+                case 1:
+                    return '1st'
+                case 2:
+                    return '2nd'
+                case 3:
+                    return '3rd'
+                default:
+                    return number + 'th'
+            }
         }
 
         function placeLedgerLines(position) {
@@ -155,31 +334,53 @@
         }
 
         function generateNotes() {
-            const naturalNotes = "EFGABCD".split('');
+            const strings = [
+                generateHalfToneSequenceOfNotes('E', 5, 13, true),
+                generateHalfToneSequenceOfNotes('B', 4, 12, true),
+                generateHalfToneSequenceOfNotes('G', 4, 12, true),
+                generateHalfToneSequenceOfNotes('D', 4, 12, true),
+                generateHalfToneSequenceOfNotes('A', 3, 12, true),
+                generateHalfToneSequenceOfNotes('E', 3, 12, true)
+            ]
+
             const notes = [];
             let currentOctave = 3;
 
             for (let i = 0; i <= 22; i++) {
-                if (naturalNotes[i % 7] === 'C') { currentOctave++ }
-                const currNote = naturalNotes[i % 7] + currentOctave;
+                if ("EFGABCD"[i % 7] === 'C') { currentOctave++ }
+                const currNote = "EFGABCD"[i % 7] + currentOctave;
                 const canBePlayedOnStrings = strings
-                    .map((s,i) => s.includes(currNote) ? i+1 : -1)
+                    .map((s, i) => s.includes(currNote) ? i + 1 : -1)
                     .filter(s => s !== -1)
-
-
                 notes.push({
                     note: currNote,
                     position: i,
                     canBePlayedOnStrings
                 })
-
-
             }
             return notes;
         }
 
-        
-        console.log(generateNotes());
+        function generateHalfToneSequenceOfNotes(startNote, startOctave, amount, withSharps) {
+
+            let notes = withSharps ? "A A# B C C# D D# E F F# G G#".split(' ') :
+                "A Bb B C Db D Eb E F Gb G Ab".split(' ')
+
+            const sequence = [];
+
+            const noteIndex = notes.indexOf(startNote);
+            const stopAt = noteIndex + amount;
+            for (let i = noteIndex; i <= stopAt; i++) {
+                const currNote = notes[i % notes.length];
+                if (currNote === 'C') { startOctave++ }
+                sequence.push(currNote + startOctave)
+            }
+
+            return sequence;
+        }
+
+
+
 
     </script>
 </body>

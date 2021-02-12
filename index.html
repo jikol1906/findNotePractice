@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Note Practicer</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
         integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
         crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
     <style>
         /*
@@ -299,7 +300,7 @@
             const notes = [];
             let currentOctave = 3;
 
-            
+
 
         }
 
@@ -323,7 +324,7 @@
         }
 
         function placeNoteOnStaffAtPosition(position) {
-            position = Math.min(22,Math.max(1,position))
+            position = Math.min(22, Math.max(1, position))
             staffNote.style.setProperty('--position', position)
             placeLedgerLines(position);
         }
