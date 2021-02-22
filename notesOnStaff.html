@@ -22,7 +22,7 @@
 
         :root {
             --small-space: 1rem;
-            --medium-space: 2.5rem;
+            --medium-space: 3rem;
             --large-space: 4rem;
         }
 
@@ -40,6 +40,7 @@
 
         body {
             height: 100%;
+            padding: 0 2rem;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -60,7 +61,7 @@
             --line-width: 2px;
 
             position: relative;
-            width: 30rem;
+            width: 40rem;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
@@ -106,6 +107,7 @@
 
         .highlight {
             color: #ffda3e;
+            font-size: 1.6em;
         }
 
         #menu {
@@ -139,16 +141,31 @@
             opacity: .5;
         }
 
+        #stop-button:hover {
+            color: white;
+        }
+
 
         #start-button {
             padding: 2rem 4rem;
             margin-bottom: var(--medium-space);
             text-transform: uppercase;
             color: white;
-            background-color: #52a5d6;
+            background-color: #00a0ff;
             border-radius: 10px;
             -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        #start-button:hover {
+            filter: brightness(1.05)
+        }
+
+        #treble-clef {
+            position: absolute;
+            left: -20px;
+            width: 120px;
+            bottom: 50px;
         }
 
         .slidecontainer {
@@ -176,8 +193,8 @@
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 25px;
-            height: 25px;
+            width: 40px;
+            height: 40px;
             background: #52a5d6;
             cursor: pointer;
             border-radius: 50px;
@@ -185,8 +202,8 @@
 
         .slider::-moz-range-thumb {
             border-radius: 50px;
-            width: 25px;
-            height: 25px;
+            width: 40px;
+            height: 40px;
             background: #52a5d6;
             cursor: pointer;
         }
@@ -198,10 +215,12 @@
     <div id="menu">
         <button id="start-button">Start</button>
         <p id="time-between">Time between notes: 5.0 seconds</p>
-        <input type="range" min="10" max="100" value="50" step="5" class="slider" id="range">
+        <input type="range" min="1" max="10" value="50" step="0.5" class="slider" id="range">
     </div>
+
     <div id="staff-container">
         <div class="staff">
+            <img id="treble-clef" src="trebleclef.svg" alt="trebleclef">
             <img src="note.svg" alt="note" id="staff-note" style="--position:10">
             <div class="line ledger-line"></div>
             <div class="line ledger-line"></div>
@@ -232,16 +251,20 @@
         const range = document.getElementById("range");
 
 
-        const synth = new Tone.Synth();
+
+
+
+
+        const synth = new Tone.Synth().toDestination();
         const notes = generateNotes();
-        let timeBetweenInSeconds = 5000;
+        let timeBetweenInMs = 5000;
         let intervalId;
 
-        range.value = 50;
+        range.value = 5;
 
         range.addEventListener('input', e => {
-            let value = e.target.value / 10;
-            timeBetweenInSeconds = value * 1000
+            let value = parseFloat(e.target.value);
+            timeBetweenInMs = value * 1000
             timeBetween.textContent = 'Time between notes: ' + (value === 10 ? value : value.toFixed(1)) + ' seconds'
         })
 
@@ -252,7 +275,7 @@
             Tone.start().then(() => {
                 intervalId = setInterval(() => {
                     nextNote()
-                }, timeBetweenInSeconds)
+                }, timeBetweenInMs)
                 nextNote()
             })
 
@@ -272,19 +295,16 @@
             placeLedgerLines(position);
         }
 
-        function getRandomIntInclusive(min, max) {
-            min = Math.ceil(min);
-            max = Math.floor(max);
-            return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
-        }
-
-
 
         function nextNote() {
             const randNote = notes[getRandomIntInclusive(0, 22)]
             const numberOfStrings = randNote.canBePlayedOnStrings.length
-            console.log(randNote.canBePlayedOnStrings);
-            stringNumber.innerHTML = 'Play on ' + '<span class="highlight">' + getStringNumber(randNote.canBePlayedOnStrings[getRandomIntInclusive(0, numberOfStrings - 1)]) + '</span> string' + ' ' + randNote.note
+            synth.triggerAttackRelease(randNote.note, "4n");
+            const span = document.createElement('span');
+            span.classList.add('highlight');
+            span.textContent = getStringNumber(randNote.canBePlayedOnStrings[getRandomIntInclusive(0, numberOfStrings - 1)]);
+            stringNumber.innerHTML = '';
+            stringNumber.append('Play on ', span, ' string');
             placeNoteOnStaffAtPosition(randNote.position)
         }
 
@@ -334,14 +354,7 @@
         }
 
         function generateNotes() {
-            const strings = [
-                generateHalfToneSequenceOfNotes('E', 5, 13, true),
-                generateHalfToneSequenceOfNotes('B', 4, 12, true),
-                generateHalfToneSequenceOfNotes('G', 4, 12, true),
-                generateHalfToneSequenceOfNotes('D', 4, 12, true),
-                generateHalfToneSequenceOfNotes('A', 3, 12, true),
-                generateHalfToneSequenceOfNotes('E', 3, 12, true)
-            ]
+            const strings = generateStandardTuning();
 
             const notes = [];
             let currentOctave = 3;
@@ -361,25 +374,39 @@
             return notes;
         }
 
-        function generateHalfToneSequenceOfNotes(startNote, startOctave, amount, withSharps) {
+        function generateHalfToneSequenceOfNotes(startNote, currentOctave, amount, withSharps) {
 
-            let notes = withSharps ? "A A# B C C# D D# E F F# G G#".split(' ') :
+            const notes = withSharps ? "A A# B C C# D D# E F F# G G#".split(' ') :
                 "A Bb B C Db D Eb E F Gb G Ab".split(' ')
 
             const sequence = [];
-
             const noteIndex = notes.indexOf(startNote);
             const stopAt = noteIndex + amount;
             for (let i = noteIndex; i <= stopAt; i++) {
                 const currNote = notes[i % notes.length];
-                if (currNote === 'C') { startOctave++ }
-                sequence.push(currNote + startOctave)
+                if (currNote === 'C') { currentOctave++ }
+                sequence.push(currNote + currentOctave)
             }
 
             return sequence;
         }
 
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+        }
 
+        function generateStandardTuning() {
+            return [
+                generateHalfToneSequenceOfNotes('E', 5, 13, true),
+                generateHalfToneSequenceOfNotes('B', 4, 12, true),
+                generateHalfToneSequenceOfNotes('G', 4, 12, true),
+                generateHalfToneSequenceOfNotes('D', 4, 12, true),
+                generateHalfToneSequenceOfNotes('A', 3, 12, true),
+                generateHalfToneSequenceOfNotes('E', 3, 12, true)
+            ]
+        }
 
 
     </script>

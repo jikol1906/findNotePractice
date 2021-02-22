@@ -1,0 +1,21 @@
+:root {
+    --small-space: 1rem;
+    --medium-space: 2.5rem;
+    --large-space: 4rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: #0ea389;
+    font-family: 'Nanum Gothic', sans-serif;
+    height: 100vh;
+    background: #02AAB0;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #00CDAC, #02AAB0);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #00CDAC, #02AAB0);
+}
