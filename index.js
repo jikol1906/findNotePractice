@@ -20,7 +20,7 @@ const ledgerLines = Array.from(document.getElementsByClassName("ledger-line"));
 
 const synth = new Tone.Synth().toDestination();
 let intervalId;
-let staffMode = false;
+
 let timeBetweenInSeconds = 5000;
 range.value = 50;
 
@@ -30,9 +30,9 @@ startButton.addEventListener('click', _ => {
     stopButton.style.display = 'block';
     Tone.start().then(() => {
         intervalId = setInterval(() => {
-            nextNote()
+            nextNoteAsLetter()
         }, timeBetweenInSeconds)
-        nextNote()
+        nextNoteAsLetter()
     })
 
 })
@@ -68,14 +68,7 @@ function getRandomBoolean() {
     return Math.random() >= 0.5;
 }
 
-function nextNote() {
-    if (!staffMode) {
-        nextNoteAsLetter()
-    } else {
-        nextNoteOnStaff();
-    }
 
-}
 
 function placeNoteOnStaffAtPosition(position) {
     position = Math.min(22, Math.max(1, position))
