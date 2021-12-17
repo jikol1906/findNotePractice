@@ -55,6 +55,7 @@
 
         #menu {
             display: grid;
+            justify-items: center;
             gap:2rem;
         }
 
@@ -91,16 +92,6 @@
 
         }
 
-        #stop-button {
-            display: none;
-            position: absolute;
-            top: 0;
-            right: 20px;
-            background-color: transparent;
-            padding: 1rem;
-            font-size: 4rem;
-            opacity: .5;
-        }
 
         #time-between {
             color: white;
