@@ -18,4 +18,20 @@ html {
     background: -webkit-linear-gradient(to right, #00CDAC, #02AAB0);
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #00CDAC, #02AAB0);
+
+}
+
+#stop-button {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    background-color: transparent;
+    padding: 1rem;
+    font-size: 4rem;
+    opacity: .5;
+}
+
+#stop-button:hover {
+    color: white;
 }
