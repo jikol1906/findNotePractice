@@ -38,7 +38,7 @@ startButton.addEventListener('click', _ => {
 })
 
 stopButton.addEventListener('click', _ => {
-    menu.style.display = 'block';
+    menu.style.display = 'grid';
     game.style.display = '';
     stopButton.style.display = 'none';
     clearInterval(intervalId);
