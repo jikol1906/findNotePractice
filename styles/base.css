@@ -24,7 +24,7 @@ html {
 #menu {
     display: grid;
     justify-items: center;
-    gap:2rem;
+    gap:3rem;
 }
 
 #stop-button {
