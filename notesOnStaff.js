@@ -39,7 +39,7 @@ startButton.addEventListener('click', _ => {
 })
 
 stopButton.addEventListener('click', _ => {
-    menu.style.display = 'block';
+    menu.style.display = 'grid';
     staffContainer.style.display = 'none';
     stopButton.style.display = 'none';
     clearInterval(intervalId);

@@ -53,11 +53,6 @@
             align-items: center;
         }
 
-        #menu {
-            display: grid;
-            justify-items: center;
-            gap:2rem;
-        }
 
         #game {
             display: none;

@@ -21,6 +21,12 @@ html {
 
 }
 
+#menu {
+    display: grid;
+    justify-items: center;
+    gap:2rem;
+}
+
 #stop-button {
     display: none;
     position: absolute;

@@ -93,9 +93,6 @@ body {
     font-size: 1.6em;
 }
 
-#menu {
-    text-align: center;
-}
 
 
 button {
@@ -108,7 +105,6 @@ button {
 
 #time-between {
     color: white;
-    margin-bottom: var(--medium-space);
     font-size: 1.2rem;
 
 }
@@ -131,7 +127,6 @@ button {
 
 #start-button {
     padding: 2rem 4rem;
-    margin-bottom: var(--medium-space);
     text-transform: uppercase;
     color: white;
     background-color: #00a0ff;
