@@ -72,21 +72,6 @@
         }
 
 
-        #start-button {
-            padding: 2rem 4rem;
-            text-transform: uppercase;
-            color: white;
-            background-color: #52a5d6;
-            border-radius: 10px;
-            -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        }
-
-        #start-button:hover {
-            filter: brightness(1.1);
-
-        }
-
 
         #time-between {
             color: white;

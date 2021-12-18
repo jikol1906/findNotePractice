@@ -41,3 +41,17 @@ html {
 #stop-button:hover {
     color: white;
 }
+
+#start-button {
+    padding: 2rem 4rem;
+    text-transform: uppercase;
+    color: white;
+    background-color: #00a0ff;
+    border-radius: 10px;
+    -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+#start-button:hover {
+    filter: brightness(1.05)
+}
