@@ -26,11 +26,11 @@ body {
 }
 
 .staff {
-    --line-distance: 1.4rem;
+    --line-distance: 1.4em;
     --line-width: 2px;
 
     position: relative;
-    width: 40rem;
+    width: 40em;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -51,7 +51,7 @@ body {
 
 
 .ledger-line {
-    width: 3rem;
+    width: 3em;
     visibility: hidden;
 }
 
@@ -59,20 +59,21 @@ body {
     display: none;
     flex-direction: column;
     align-items: center;
+    font-size: 1rem;
 }
 
 #staff-note {
     position: absolute;
     bottom: calc((var(--line-width) + var(--line-distance)) / 2 * var(--position));
     transition: bottom .1s ease;
-    width: 1.7rem;
+    width: 1.7em;
     left: 50%;
     transform: translateX(-50%);
 }
 
 #string-number {
     color: white;
-    font-size: 5rem;
+    font-size: 5em;
 }
 
 .highlight {
@@ -108,9 +109,9 @@ body {
 
 #treble-clef {
     position: absolute;
-    left: -20px;
-    width: 120px;
-    bottom: 50px;
+    left: -1.25em;
+    width: 7.5em;
+    bottom: 3.125em;
 }
 
 .slidecontainer {
