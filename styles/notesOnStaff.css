@@ -68,6 +68,7 @@ body {
 #staff-note {
     position: absolute;
     bottom: calc((var(--line-width) + var(--line-distance)) / 2 * var(--position));
+    transition: bottom .1s ease;
     width: 1.7rem;
     left: 50%;
     transform: translateX(-50%);
