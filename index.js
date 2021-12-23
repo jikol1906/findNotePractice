@@ -1,8 +1,8 @@
-const notesWithSharps = "A A# B C C# D D# E F F# G G#".split(' ')
-const notesWithFlats = "A Bb B C Db D Eb E F Gb G Ab".split(' ')
-const naturalNotes = notesWithSharps.filter(n => !n.includes('#'));
+const standardTuning = generateStandardTuning()
+const standardTuningFlat = generateStandardTuningFlats()
 
-
+standardTuning.forEach(a => a.shift())
+standardTuningFlat.forEach(a => a.shift())    
 
 
 
@@ -66,11 +66,12 @@ function getRandomBoolean() {
 
 
 function nextNoteAsLetter() {
-    const note = getRandomNote();
+    const stringNumber = getRandomIntInclusive(0, 5);
+    const note = getRandomNote(stringNumber);
     reset_animation();
     timeLeft.style.animation = 'shrink ' + timeBetweenInSeconds + 'ms linear infinite';
-    synth.triggerAttackRelease(note + "4", "4n");
-    notes.innerHTML = '<span class="highlight">' + note + '</span> <span style="font-size:2.5rem"> on the </span> ' + '<span class="highlight">' + getStringNumber(getRandomIntInclusive(1, 6)) + '</span>' + ' <span style="font-size:2.5rem"> string </span>'
+    synth.triggerAttackRelease(note, "4n");
+    notes.innerHTML = '<span class="highlight">' + note.replace(/\d+/g,"") + '</span> <span style="font-size:2.5rem"> on the </span> ' + '<span class="highlight">' + getStringNumber(stringNumber+1) + '</span>' + ' <span style="font-size:2.5rem"> string </span>'
 }
 
 function reset_animation() {
@@ -80,8 +81,10 @@ function reset_animation() {
     el.style.animation = null;
 }
 
-function getRandomNote() {
-    return getRandomBoolean() ? notesWithSharps[getRandomIntInclusive(0, 11)] : notesWithFlats[getRandomIntInclusive(0, 11)];
+function getRandomNote(sNumber) {
+    const flat = getRandomBoolean();
+    const notes = flat ? standardTuningFlat[sNumber] : standardTuning[sNumber]
+    return notes[getRandomIntInclusive(0, notes.length - 1)]
 }
 
 function getStringNumber(number) {
