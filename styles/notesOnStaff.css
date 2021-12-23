@@ -82,13 +82,6 @@ body {
 
 
 
-button {
-    font-size: 2rem;
-    cursor: pointer;
-    border: none;
-    letter-spacing: .2rem;
-}
-
 
 #time-between {
     color: white;
