@@ -1,8 +1,8 @@
 const notesWithSharps = "A A# B C C# D D# E F F# G G#".split(' ')
 const notesWithFlats = "A Bb B C Db D Eb E F Gb G Ab".split(' ')
 const naturalNotes = notesWithSharps.filter(n => !n.includes('#'));
-const notesWithStaffPosition = generateNotesWithStaffPostion();
-let includeAccidentals = false;
+
+
 
 
 
@@ -50,13 +50,7 @@ range.addEventListener('input', e => {
     timeBetween.textContent = 'Time between notes: ' + (value === 10 ? value : value.toFixed(1)) + ' seconds'
 })
 
-function generateNotesWithStaffPostion() {
-    const notes = [];
-    let currentOctave = 3;
 
-
-
-}
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
@@ -70,43 +64,6 @@ function getRandomBoolean() {
 
 
 
-function placeNoteOnStaffAtPosition(position) {
-    position = Math.min(22, Math.max(1, position))
-    staffNote.style.setProperty('--position', position)
-    placeLedgerLines(position);
-}
-
-function placeLedgerLines(position) {
-    ledgerLines.forEach(l => l.style.visibility = 'hidden')
-    if (position === 22 || position == 21) {
-        showLedgerLines(3, true)
-    } else if (position === 20 || position === 19) {
-        showLedgerLines(2, true)
-    } else if (position === 18 || position === 17) {
-        showLedgerLines(1, true)
-    } else if (position === 5 || position === 4) {
-        showLedgerLines(1, false)
-    } else if (position === 3 || position === 2) {
-        showLedgerLines(2, false)
-    } else if (position === 1) {
-        showLedgerLines(3, false)
-    }
-}
-
-function showLedgerLines(amount, isTopLedgerLines) {
-    const topThreeLedgerLines = ledgerLines.slice(0, 3).reverse();
-    const bottomThreeLedgerLines = ledgerLines.slice(3);
-
-    if (isTopLedgerLines) {
-        for (let i = amount - 1; i >= 0; i--) {
-            topThreeLedgerLines[i].style.visibility = 'visible'
-        }
-    } else {
-        for (let i = amount - 1; i >= 0; i--) {
-            bottomThreeLedgerLines[i].style.visibility = 'visible'
-        }
-    }
-}
 
 function nextNoteAsLetter() {
     const note = getRandomNote();
