@@ -44,6 +44,7 @@ html {
 
 #start-button {
     padding: 2rem 4rem;
+    cursor: pointer;
     font-family: inherit;
     text-transform: uppercase;
     color: white;
