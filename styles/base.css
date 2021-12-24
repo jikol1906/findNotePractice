@@ -49,13 +49,15 @@ html {
 }
 
 #start-button {
-    padding: 2rem 4rem;
+    font-size: 2em;
+    letter-spacing: 4px;
+    padding: 1.1em 3em;
     cursor: pointer;
     font-family: inherit;
     text-transform: uppercase;
     color: white;
     background-color: #00a0ff;
-    border-radius: 10px;
+    border-radius: 0.625em;
     -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
