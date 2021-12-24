@@ -29,7 +29,8 @@ html {
 #menu {
     display: grid;
     justify-items: center;
-    gap:3rem;
+    font-size: 1rem;
+    gap: 3em;
 }
 
 #stop-button {
