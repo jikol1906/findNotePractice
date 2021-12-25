@@ -29,7 +29,7 @@ html {
 #menu {
     display: grid;
     justify-items: center;
-    font-size: 1rem;
+    font-size: min(3vw,1rem);
     gap: 3em;
 }
 
