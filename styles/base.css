@@ -33,6 +33,12 @@ html {
     gap: 3em;
 }
 
+#time-between {
+    color: white;
+    font-size: 1.2em;
+
+}
+
 #stop-button {
     display: none;
     position: absolute;
