@@ -57,7 +57,7 @@
 
         #game {
             display: none;
-            font-size: 1rem;
+            font-size: min(2.6vw,1.5rem);
         }
 
         #notes {
