@@ -71,7 +71,7 @@ function nextNoteAsLetter() {
     reset_animation();
     timeLeft.style.animation = 'shrink ' + timeBetweenInSeconds + 'ms linear infinite';
     synth.triggerAttackRelease(note, "4n");
-    notes.innerHTML = '<span class="highlight">' + note.replace(/\d+/g,"") + '</span> <span style="font-size:2.5rem"> on the </span> ' + '<span class="highlight">' + getStringNumber(stringNumber+1) + '</span>' + ' <span style="font-size:2.5rem"> string </span>'
+    notes.innerHTML = '<span class="highlight">' + note.replace(/\d+/g,"") + '</span> <span > on the </span> ' + '<span class="highlight">' + getStringNumber(stringNumber+1) + '</span>' + ' <span > string </span>'
 }
 
 function reset_animation() {
