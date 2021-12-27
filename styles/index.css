@@ -61,7 +61,7 @@
         #notes {
             color: white;
 
-            font-size: clamp(1.5rem, 9vw, 6rem);
+            font-size: 6em;
         }
 
         button {
