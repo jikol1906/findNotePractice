@@ -92,15 +92,3 @@
         
 
 
-
-        @keyframes shrink {
-            from {
-                opacity: 1;
-                transform: scaleX(1)
-            }
-
-            to {
-                opacity: .5;
-                transform: scaleX(0);
-            }
-        }

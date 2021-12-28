@@ -62,14 +62,15 @@ function getRandomBoolean() {
     return Math.random() >= 0.5;
 }
 
-
+function animateTimeLeft() {
+    gsap.fromTo(timeLeft, {scaleX: 1}, {scaleX: 0, ease:"none", duration: timeBetweenInSeconds/1000});
+}
 
 
 function nextNoteAsLetter() {
     const stringNumber = getRandomIntInclusive(0, 5);
     const note = getRandomNote(stringNumber);
-    reset_animation();
-    timeLeft.style.animation = 'shrink ' + timeBetweenInSeconds + 'ms linear infinite';
+    animateTimeLeft()
     synth.triggerAttackRelease(note, "4n");
     notes.innerHTML = '<span class="highlight">' + note.replace(/\d+/g,"") + '</span> <span > on the </span> ' + '<span class="highlight">' + getStringNumber(stringNumber+1) + '</span>' + ' <span > string </span>'
 }
