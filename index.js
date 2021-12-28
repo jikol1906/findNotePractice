@@ -72,7 +72,16 @@ function nextNoteAsLetter() {
     const note = getRandomNote(stringNumber);
     animateTimeLeft()
     synth.triggerAttackRelease(note, "4n");
-    notes.innerHTML = '<span class="highlight">' + note.replace(/\d+/g,"") + '</span> <span > on the </span> ' + '<span class="highlight">' + getStringNumber(stringNumber+1) + '</span>' + ' <span > string </span>'
+
+    const noteSpan = document.createElement("span");
+    const stringSpan = document.createElement("span");
+    noteSpan.classList.add('highlight')
+    stringSpan.classList.add('highlight')
+
+    noteSpan.append(note.replace(/\d+/g,""))
+    stringSpan.append(getStringNumber(stringNumber+1))
+    notes.innerHTML = '';
+    notes.append(noteSpan,' on the ', stringSpan, ' string')
 }
 
 function reset_animation() {
