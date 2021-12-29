@@ -57,7 +57,10 @@
 
         #game {
             display: none;
-            font-size: min(2.6vw,1.5rem);
+        }
+        
+        .notes-container {
+            font-size: min(2.6vw,1rem);
         }
 
         #notes {
@@ -98,6 +101,29 @@
 
         .slidecontainer {
             width: 100%;
+        }
+
+        .fretboard-container {
+            margin-bottom: 4em;
+            width: 100%;
+            position: relative;
+            font-size: min(1.5vw,1rem);
+        }
+
+        #pointer {
+
+            height: 1.2em;
+            width: 1.2em;
+            border-radius: 50%;
+            top: calc(16.6% * var(--y,0) + 0.6em);
+            left: calc((100% / 12) * var(--x,0) + 2em);
+            background-color: yellow;
+            position: absolute;
+        }
+
+        #fretboard {
+            width: 63.25em;
+            height: auto;
         }
 
         
