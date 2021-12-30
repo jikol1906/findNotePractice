@@ -119,8 +119,6 @@
             top: calc(16.6% * var(--y,0) + 0.6em);
             left: calc((100% / 12) * var(--x,0) + 2em);
             background-color: yellow;
-            -webkit-box-shadow: 5px 5px 22px 5px #E6FF7A; 
-            box-shadow: 5px 5px 22px 5px #E6FF7A;
             position: absolute;
         }
 
