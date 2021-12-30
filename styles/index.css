@@ -119,12 +119,24 @@
             top: calc(16.6% * var(--y,0) + 0.6em);
             left: calc((100% / 12) * var(--x,0) + 2em);
             background-color: yellow;
+            animation: shake  .3s infinite alternate;
             position: absolute;
         }
 
         #fretboard {
             width: 63.25em;
             height: auto;
+        }
+
+        @keyframes shake {
+            from {
+                transform: scale(.8);
+                filter: brightness(.8);
+            }
+            to {
+                transform: scale(1.5);
+                filter: brightness(1.9);
+            }
         }
 
         
