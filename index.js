@@ -8,6 +8,7 @@ standardTuningFlat.forEach(a => a.shift())
 
 
 const notes = document.getElementById("notes");
+const pointer = document.getElementById("pointer");
 const startButton = document.getElementById("start-button");
 const stopButton = document.getElementById("stop-button");
 const range = document.getElementById("range");
