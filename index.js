@@ -71,6 +71,7 @@ function animateTimeLeft() {
 function nextNoteAsLetter() {
     const stringNumber = getRandomIntInclusive(0, 5);
     const [note,fretNum] = getRandomNote(stringNumber);
+    movePointer(stringNumber, fretNum);
     animateTimeLeft()
     synth.triggerAttackRelease(note, "4n");
 
@@ -83,6 +84,11 @@ function nextNoteAsLetter() {
     stringSpan.append(getStringNumber(stringNumber+1))
     notes.innerHTML = '';
     notes.append(noteSpan,' on the ', stringSpan, ' string')
+}
+
+function movePointer(stringNumber, fretNum) {
+    pointer.style.setProperty("--y", stringNumber);
+    pointer.style.setProperty("--x", fretNum);
 }
 
 function reset_animation() {
