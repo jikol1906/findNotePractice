@@ -70,7 +70,7 @@ function animateTimeLeft() {
 
 function nextNoteAsLetter() {
     const stringNumber = getRandomIntInclusive(0, 5);
-    const note = getRandomNote(stringNumber);
+    const [note,fretNum] = getRandomNote(stringNumber);
     animateTimeLeft()
     synth.triggerAttackRelease(note, "4n");
 
@@ -95,7 +95,8 @@ function reset_animation() {
 function getRandomNote(sNumber) {
     const flat = getRandomBoolean();
     const notes = flat ? standardTuningFlat[sNumber] : standardTuning[sNumber]
-    return notes[getRandomIntInclusive(0, notes.length - 1)]
+    const fretNum = getRandomIntInclusive(0, notes.length - 1);
+    return [notes[fretNum],fretNum]
 }
 
 function getStringNumber(number) {
