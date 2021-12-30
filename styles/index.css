@@ -104,11 +104,12 @@
         }
 
         .fretboard-container {
+            margin: 0 auto;
             margin-bottom: 4em;
-            width: 100%;
+            width: 63.25em;
             position: relative;
-            font-size: min(1.5vw,1rem);
-            transform: perspective(800px) rotateX(65deg);
+            font-size: min(1.3vw,1rem);
+            transform: perspective(550px) rotateX(65deg);
         }
 
         #pointer {
@@ -124,7 +125,7 @@
         }
 
         #fretboard {
-            width: 63.25em;
+            width: 100%;
             height: auto;
         }
 
