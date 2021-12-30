@@ -37,6 +37,11 @@ html {
     gap: 3em;
 }
 
+.text {
+    color: white;
+    font-size: 1.2em; 
+}
+
 #time-between {
     color: white;
     font-size: 1.2em;

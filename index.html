@@ -24,8 +24,7 @@
 <body>
 
 
-
-    <div id="game">
+    <template id="fretboard-template">
         <div class="fretboard-container">
             <svg id="fretboard" viewBox="0 0 1020 256" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="4" width="1012" height="256" rx="17" fill="url(#paint0_linear_2025_1202)"/>
@@ -131,11 +130,12 @@
                 </linearGradient>
                 </defs>
                 </svg>
-                
-        <div id="pointer" style="--y:2; --x:0;"></div>       
-
-
+        
+        <div id="pointer" style="--y:2; --x:0;"></div>
         </div>
+    </template>
+
+    <div id="game">
         <div class="notes-container">
             <h1 id="notes"></h1>
             <div id="time-left"></div>

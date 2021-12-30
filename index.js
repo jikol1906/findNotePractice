@@ -8,7 +8,10 @@ standardTuningFlat.forEach(a => a.shift())
 
 
 const notes = document.getElementById("notes");
-const pointer = document.getElementById("pointer");
+let pointer;
+let fretboard;
+const addfretboardCheckbox = document.getElementById("addfretboard");
+const fretboardTemplate = document.getElementById("fretboard-template");
 const startButton = document.getElementById("start-button");
 const stopButton = document.getElementById("stop-button");
 const range = document.getElementById("range");
@@ -28,6 +31,9 @@ range.value = 50;
 startButton.addEventListener('click', _ => {
     menu.style.display = 'none';
     game.style.display = 'block';
+    if(addfretboardCheckbox.checked) {
+        addFretboard();
+    }
     stopButton.style.display = 'block';
     Tone.start().then(() => {
         intervalId = setInterval(() => {
@@ -41,6 +47,9 @@ startButton.addEventListener('click', _ => {
 stopButton.addEventListener('click', _ => {
     menu.style.display = 'grid';
     game.style.display = '';
+    if(addfretboardCheckbox.checked) {
+        document.getElementsByClassName("fretboard-container")[0].remove()
+    }
     stopButton.style.display = 'none';
     clearInterval(intervalId);
 })
@@ -52,6 +61,12 @@ range.addEventListener('input', e => {
 })
 
 
+
+function addFretboard() {
+    fretboard = fretboardTemplate.content.cloneNode(true);
+    game.insertBefore(fretboard, game.firstChild);
+    pointer = document.getElementById("pointer");
+}
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
@@ -71,7 +86,11 @@ function animateTimeLeft() {
 function nextNoteAsLetter() {
     const stringNumber = getRandomIntInclusive(0, 5);
     const [note,fretNum] = getRandomNote(stringNumber);
-    movePointer(stringNumber, fretNum);
+
+    if(addfretboardCheckbox.checked) {
+        movePointer(stringNumber, fretNum);
+    }
+    
     animateTimeLeft()
     synth.triggerAttackRelease(note, "4n");
 
