@@ -84,12 +84,7 @@ function nextNoteAsLetter() {
     notes.append(noteSpan,' on the ', stringSpan, ' string')
 }
 
-function reset_animation() {
-    var el = document.getElementById('time-left');
-    el.style.animation = 'none';
-    el.offsetHeight; /* trigger reflow */
-    el.style.animation = null;
-}
+
 
 function getRandomNote(sNumber) {
     const flat = getRandomBoolean();
