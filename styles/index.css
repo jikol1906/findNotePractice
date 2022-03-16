@@ -33,6 +33,7 @@
 
         fieldset {
             border:none;
+            justify-self: stretch;
         }
         fieldset legend {
             font-size: 2rem;
