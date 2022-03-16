@@ -38,10 +38,18 @@
             font-size: 2rem;
             margin-bottom: .9rem;
         }
-        #frets-to-include label span {font-size:1.5rem;}
-        #frets-to-include label:not(:first-of-type) span {
-            margin-left: .9rem;
-            margin-right: .3rem;
+        .label-wrapper span {
+            font-size:1.5rem;
+        }
+
+        .label-wrapper {
+            display: flex;
+            gap:1.5rem;
+        }
+        .label-wrapper label {
+            display: flex;
+            gap:.4rem;
+            align-items: center;
         }
 
 
