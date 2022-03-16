@@ -12,6 +12,11 @@
 button {
     border: none;
     cursor: pointer;
+    background-color: #00a0ff;
+    border-radius: 0.625em;
+    color: white;
+    padding: 1.1em 3em;
+    text-transform: uppercase;
 }
 
 html {
@@ -59,14 +64,8 @@ html {
 
 #start-button {
     font-size: 2em;
-    letter-spacing: 4px;
-    padding: 1.1em 3em;
-    cursor: pointer;
+    letter-spacing: 4px;    
     font-family: inherit;
-    text-transform: uppercase;
-    color: white;
-    background-color: #00a0ff;
-    border-radius: 0.625em;
     -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
