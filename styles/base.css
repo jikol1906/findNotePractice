@@ -22,7 +22,7 @@ button {
 html {
     background-color: #0ea389;
     font-family: 'Nanum Gothic', sans-serif;
-    height: 100vh;
+    min-height: 100%;
     color: white;
     background: #02AAB0;
     /* fallback for old browsers */
