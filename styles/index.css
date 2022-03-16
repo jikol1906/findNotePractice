@@ -11,6 +11,10 @@
             align-items: center;
         }
 
+        .text-lg {
+            font-size:2rem;
+        }
+
         .line {
             background-color: black;
             height: var(--line-width);
@@ -53,12 +57,11 @@
         .fieldset-button-wrapper {
             display: grid;
             margin-top: auto;
-            grid-template-columns: repeat(2,1fr);
+            grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
             gap: var(--gap);
         }
 
         fieldset legend {
-            font-size: 2rem;
             text-align: center;
             margin-bottom: .9rem;
         }

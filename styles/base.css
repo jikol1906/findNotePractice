@@ -44,12 +44,6 @@ html {
     gap: 3em;
 }
 
-#time-between {
-    color: white;
-    font-size: 2rem;
-
-}
-
 #stop-button {
     display: none;
     position: absolute;
