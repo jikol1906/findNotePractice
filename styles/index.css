@@ -39,7 +39,9 @@
         .fieldset-container {
             display: grid;
             gap:2rem;
-            grid-auto-flow: column;
+            justify-self: stretch;
+            justify-content: center;
+            grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
             --gap:1rem;
         }
 
@@ -91,7 +93,7 @@
         }
 
         body {
-            height: 100%;
+            min-height: 100%;
             display: flex;
         }
 
