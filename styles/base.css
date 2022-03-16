@@ -38,7 +38,7 @@ html {
     margin: auto 0;
     margin: auto;
     flex: 1;
-    max-width: 1050px;
+    max-width: 900px;
     justify-items: center;
     font-size: min(3vw,1rem);
     gap: 3em;

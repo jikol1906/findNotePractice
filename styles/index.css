@@ -48,7 +48,7 @@
             gap:2rem;
             justify-self: stretch;
             justify-content: center;
-            grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+            grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
             --gap:1rem;
         }
 
@@ -60,7 +60,7 @@
         .fieldset-button-wrapper {
             display: grid;
             margin-top: auto;
-            grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
+            grid-template-columns: repeat(2,1fr);
             gap: var(--gap);
         }
 
