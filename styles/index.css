@@ -35,6 +35,13 @@
             border:none;
             justify-self: stretch;
         }
+
+        .fieldset-container {
+            display: grid;
+            grid-auto-flow: column;
+            
+        }
+
         fieldset legend {
             font-size: 2rem;
             text-align: center;
