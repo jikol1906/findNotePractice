@@ -64,14 +64,9 @@
             justify-self: stretch;
         }
 
-        /* .fieldset-container {
-            display: grid;
-            gap:2rem;
+        .fieldset-container {
             justify-self: stretch;
-            justify-content: center;
-            grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
-            --gap:1rem;
-        } */
+        }
 
         .fieldset-wrapper {
             display: flex;
