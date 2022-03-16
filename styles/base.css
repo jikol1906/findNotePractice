@@ -30,6 +30,7 @@ html {
 #menu {
     display: grid;
     padding:2rem;
+    margin:auto;
     justify-items: center;
     font-size: min(3vw,1rem);
     gap: 3em;
