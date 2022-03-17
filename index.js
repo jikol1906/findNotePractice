@@ -17,6 +17,8 @@ const menu = document.getElementById("menu");
 const game = document.getElementById("game");
 const staffNote = document.getElementById("staff-note");
 const ledgerLines = Array.from(document.getElementsByClassName("ledger-line"));
+const fretsToInclude = document.querySelectorAll("#frets-to-include input[type='checkbox']")
+const [fretsToIncludeButtonSelectAll,fretsToIncludeButtonDeselectAll] = document.querySelectorAll("#frets-to-include button");
 
 const synth = new Tone.Synth().toDestination();
 let intervalId;
