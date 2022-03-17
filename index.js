@@ -16,12 +16,7 @@ const timeLeft = document.getElementById("time-left");
 const menu = document.getElementById("menu");
 const game = document.getElementById("game");
 const staffNote = document.getElementById("staff-note");
-const ledgerLines = Array.from(document.getElementsByClassName("ledger-line"));
-const fretsToInclude = document.querySelectorAll("#frets-to-include input[type='checkbox']")
-const [fretsToIncludeButtonSelectAll,fretsToIncludeButtonDeselectAll] = document.querySelectorAll("#frets-to-include button");
-
-fretsToIncludeButtonDeselectAll.addEventListener("click",() => {fretsToInclude.forEach(c => c.checked = false)})
-fretsToIncludeButtonSelectAll.addEventListener("click",() => {fretsToInclude.forEach(c => c.checked = true)})
+const ledgerLines = Array.from(document.getElementsByClassName("ledger-line")); 
 
 const synth = new Tone.Synth().toDestination();
 let intervalId;

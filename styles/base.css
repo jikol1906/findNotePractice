@@ -36,11 +36,11 @@ html {
 
 #menu {
     display: grid;
-    padding:2rem;
+    padding:.5rem;
     margin: auto 0;
     margin: auto;
     flex: 1;
-    max-width: 900px;
+    max-width: 500px;
     justify-items: center;
     font-size: min(3vw,1rem);
     gap: 3em;
