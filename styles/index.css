@@ -86,7 +86,10 @@
         #notes-included-checkboxes label input[type="checkbox"]:checked + span {
             background-color: #00a0ff;
         }
-        
+        #notes-included-checkboxes label input[type="checkbox"] + span:hover {
+            outline:2px solid grey;
+        }
+
         #notes-included-checkboxes label span {
             content:'';
             text-align: center;
