@@ -86,13 +86,16 @@
         #notes-included-checkboxes label input[type="checkbox"]:checked + span {
             background-color: #00a0ff;
         }
-
+        
         #notes-included-checkboxes label span {
             content:'';
-            display:block;
-            height: 20px;
-            width:100%;
+            text-align: center;
+            font-size: .7rem;
+            cursor: pointer;
+            padding:3px;
+            flex:1;
         }
+
 
         .label-wrapper button {
             grid-column-end: span 3;
@@ -101,9 +104,6 @@
 
         .label-wrapper label {
             display: flex;
-            flex-direction: column;
-            gap:.4rem;
-            align-items: center;
         }
 
 

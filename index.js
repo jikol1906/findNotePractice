@@ -16,7 +16,36 @@ const timeLeft = document.getElementById("time-left");
 const menu = document.getElementById("menu");
 const game = document.getElementById("game");
 const staffNote = document.getElementById("staff-note");
-const ledgerLines = Array.from(document.getElementsByClassName("ledger-line")); 
+const ledgerLines = Array.from(document.getElementsByClassName("ledger-line"));
+const includeNotesCheckboxes = document.querySelector("#notes-included-checkboxes .label-wrapper")
+
+function createNoteCheckbox(note,x,y) {
+    const l = document.createElement("label")
+    
+    const cb = document.createElement("input")
+    cb.setAttribute("type","checkbox")
+    cb.setAttribute("checked","true")
+    cb.setAttribute("data-x",x)
+    cb.setAttribute("data-y",y)
+    
+    const s = document.createElement("span")
+    s.innerText = note
+    
+    l.appendChild(cb)
+    l.appendChild(s)
+
+    return l;
+}
+
+
+for (let i = 0; i < 6; i++) {
+    for (let j = 0; j < 12; j++) {
+        includeNotesCheckboxes.append(createNoteCheckbox(["A","B","C"][j % 3],j,i))
+    }
+}
+
+
+
 
 const synth = new Tone.Synth().toDestination();
 let intervalId;
