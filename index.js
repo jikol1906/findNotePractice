@@ -20,6 +20,9 @@ const ledgerLines = Array.from(document.getElementsByClassName("ledger-line"));
 const fretsToInclude = document.querySelectorAll("#frets-to-include input[type='checkbox']")
 const [fretsToIncludeButtonSelectAll,fretsToIncludeButtonDeselectAll] = document.querySelectorAll("#frets-to-include button");
 
+fretsToIncludeButtonDeselectAll.addEventListener("click",() => {fretsToInclude.forEach(c => c.checked = false)})
+fretsToIncludeButtonSelectAll.addEventListener("click",() => {fretsToInclude.forEach(c => c.checked = true)})
+
 const synth = new Tone.Synth().toDestination();
 let intervalId;
 
