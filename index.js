@@ -53,6 +53,16 @@ function initialzeIncludeNoteChecboxes() {
 
 initialzeIncludeNoteChecboxes();
 
+function includeNote(note) {
+    strings.forEach(s => {
+        s.forEach(cb => {
+            if(cb.getAttribute("data-note") === note) {
+                cb.checked = true;
+            }
+        })
+    })
+}
+
 function includeString(number) {
 
     for (let i = 0 ; i < 12; i++) {
