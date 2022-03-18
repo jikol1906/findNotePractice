@@ -29,6 +29,7 @@ function initialzeIncludeNoteChecboxes() {
         // cb.setAttribute("checked","true")
         cb.setAttribute("data-x",x)
         cb.setAttribute("data-y",y)
+        cb.setAttribute("data-note",note)
         
         const s = document.createElement("span")
         s.innerText = note
