@@ -5,8 +5,6 @@ standardTuning.forEach(a => a.shift())
 standardTuningFlat.forEach(a => a.shift())    
 
 
-
-
 const notes = document.getElementById("notes");
 const startButton = document.getElementById("start-button");
 const stopButton = document.getElementById("stop-button");
@@ -27,7 +25,7 @@ function initialzeIncludeNoteChecboxes() {
         
         const cb = document.createElement("input")
         cb.setAttribute("type","checkbox")
-        // cb.setAttribute("checked","true")
+        cb.setAttribute("checked","true")
         cb.setAttribute("data-x",x)
         cb.setAttribute("data-y",y)
         cb.setAttribute("data-note",note)
@@ -43,7 +41,10 @@ function initialzeIncludeNoteChecboxes() {
     for (let i = 0; i < 6; i++) {
         const string = []
         for (let j = 0; j < 12; j++) {
-            const cb = createNoteCheckbox(standardTuning[i][j].replace(/\d/,""),j,i)
+            const noteSharp = standardTuning[i][j].replace(/\d/,"");
+            const noteFlat = standardTuningFlat[i][j].replace(/\d/,"");
+            const noteToInsert = noteSharp === noteFlat ? noteSharp : `${noteSharp}/${noteFlat}`
+            const cb = createNoteCheckbox(noteToInsert,j,i)
             string.push(cb.querySelector("input"))
             includeNotesCheckboxes.append(cb)
         }
