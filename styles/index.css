@@ -123,10 +123,17 @@
             flex:1;
         }
 
-        #include-notes-buttons {
-            grid-area:bt;
+        .button-container {
             display: grid;
+            gap:1rem;
+            justify-items: center;
+            grid-column: 1/-1;
             justify-self: stretch;
+        }
+
+        .button-grid {
+            justify-self: stretch;
+            display: grid;
             gap:1rem;
             grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
         }
