@@ -40,7 +40,7 @@ function createNoteCheckbox(note,x,y) {
 
 for (let i = 0; i < 6; i++) {
     for (let j = 0; j < 12; j++) {
-        includeNotesCheckboxes.append(createNoteCheckbox(["A","B","C"][j % 3],j,i))
+        includeNotesCheckboxes.append(createNoteCheckbox(standardTuning[i][j].replace(/\d/,""),j,i))
     }
 }
 

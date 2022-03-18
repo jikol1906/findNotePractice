@@ -40,8 +40,8 @@ html {
     padding:.5rem;
     margin: auto 0;
     margin: auto;
+    min-width: 0;
     flex: 1;
-    max-width: 900px;
     justify-items: center;
     font-size: min(3vw,1rem);
     gap: 3em;
