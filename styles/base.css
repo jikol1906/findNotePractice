@@ -41,7 +41,7 @@ html {
         "sb tl"
         "cb cb"
         "bt bt";
-    padding:4rem .5rem;
+    padding:4rem 2rem;
     margin: auto 0;
     margin: auto;
     min-width: 0;
@@ -49,6 +49,16 @@ html {
     justify-items: center;
     font-size: min(3vw,1rem);
     gap: 4em;
+}
+
+@media only screen and (max-width: 950px) {
+    #menu {
+        grid-template-areas: 
+        "sb"
+        "tl"
+        "cb"
+        "bt";
+    }
 }
 
 .menu-top {
