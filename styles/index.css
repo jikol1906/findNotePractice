@@ -87,11 +87,16 @@
             display: grid;
             grid-template-columns: repeat(12,1fr);
             min-width: 900px;
-            flex:1;
+
             gap:.5rem;
             border:5px solid rgba(255, 255, 255, 0.349);
             border-radius: 20px;
             padding:1rem;
+        }
+
+        .label-overflow-wrapper {
+            flex:1;
+            overflow: auto;  
         }
 
         #notes-included-checkboxes {
@@ -107,7 +112,7 @@
         
         #notes-included-checkboxes fieldset {
             border:none;
-            overflow: auto;   
+             
             min-width: 0;
             justify-self: stretch;
         }
