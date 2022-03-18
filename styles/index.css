@@ -130,14 +130,14 @@
         .label-wrapper input[type="checkbox"] {
             display:none;
         }
-        #notes-included-checkboxes label input[type="checkbox"]:checked + span {
+        .label-wrapper input[type="checkbox"]:checked + span {
             background-color: #00a0ff;
         }
-        #notes-included-checkboxes label input[type="checkbox"] + span:hover {
+        .label-wrapper input[type="checkbox"] + span:hover {
             outline:2px solid grey;
         }
 
-        #notes-included-checkboxes label span {
+        .label-wrapper span {
             content:'';
             text-align: center;
             font-size: .7rem;
