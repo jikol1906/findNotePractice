@@ -37,14 +37,20 @@ html {
 
 #menu {
     display: grid;
-    padding:.5rem;
+    padding:4rem .5rem;
     margin: auto 0;
     margin: auto;
     min-width: 0;
     flex: 1;
     justify-items: center;
     font-size: min(3vw,1rem);
-    gap: 3em;
+    gap: 2em;
+}
+
+.menu-top {
+    display: grid;
+    justify-items: center;
+    gap:2rem;
 }
 
 #stop-button {

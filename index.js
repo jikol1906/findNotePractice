@@ -54,20 +54,28 @@ function initialzeIncludeNoteChecboxes() {
 initialzeIncludeNoteChecboxes();
 
 function includeNote(note) {
+    iterateAllCheckboxes((cb) => {
+        if(cb.getAttribute("data-note") === note) {
+            cb.checked = true;
+        }
+    })
+
+}
+
+function iterateAllCheckboxes(fn) {
     strings.forEach(s => {
-        s.forEach(cb => {
-            if(cb.getAttribute("data-note") === note) {
-                cb.checked = true;
-            }
+        s.forEach(cp => {
+            fn(cp)
         })
     })
 }
 
-function includeString(number) {
+function clearAllSelectedNotes() {
+   iterateAllCheckboxes(cp => cp.checked = false) 
+}
 
-    for (let i = 0 ; i < 12; i++) {
-        strings[number][i].checked = true
-    }
+function includeString(number) {
+    strings[number].forEach(cb => cb.checked = true)    
 }
 
 function includeFret(number) {
