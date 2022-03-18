@@ -112,18 +112,21 @@ let timeBetweenInSeconds = 5000;
 range.value = 50;
 
 startButton.addEventListener('click', _ => {
-    menu.style.display = 'none';
-    game.style.display = 'block';
     
     const stringNoteMap = generateStringNoteMap();
-    
-    stopButton.style.display = 'block';
-    Tone.start().then(() => {
-        intervalId = setInterval(() => {
+    if(Object.keys(stringNoteMap).length === 0) {
+        alert("must choose at least one note")
+    } else {
+        menu.style.display = 'none';
+        game.style.display = 'block';
+        stopButton.style.display = 'block';
+        Tone.start().then(() => {
+            intervalId = setInterval(() => {
+                nextNoteAsLetter(stringNoteMap)
+            }, timeBetweenInSeconds)
             nextNoteAsLetter(stringNoteMap)
-        }, timeBetweenInSeconds)
-        nextNoteAsLetter(stringNoteMap)
-    })
+        })
+    }
 
 })
 
