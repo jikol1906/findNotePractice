@@ -48,7 +48,7 @@ html {
     flex: 1;
     justify-items: center;
     font-size: min(3vw,1rem);
-    gap: 2em;
+    gap: 4em;
 }
 
 .menu-top {
