@@ -86,6 +86,24 @@ function includeFret(number) {
     }
 }
 
+function generateStringNoteMap() {
+    const res = {};
+    
+    for (let i = 0; i < strings.length; i++) {
+        const string = strings[i].reduce((p,c) => {
+            if(c.checked) {
+                p.push(c.getAttribute("data-note"))
+            }
+            return p
+        },[])
+        if(string.length > 0) {
+            res[i] = string
+        }
+    }
+
+    return res;
+}
+
 
 const synth = new Tone.Synth().toDestination();
 let intervalId;
