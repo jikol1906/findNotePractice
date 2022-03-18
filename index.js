@@ -31,7 +31,7 @@ function initialzeIncludeNoteChecboxes() {
         cb.setAttribute("data-note",note)
         
         const s = document.createElement("span")
-        s.innerText = note
+        s.innerText = note.replace(/\d/g,"")
         
         l.appendChild(cb)
         l.appendChild(s)
@@ -41,8 +41,8 @@ function initialzeIncludeNoteChecboxes() {
     for (let i = 0; i < 6; i++) {
         const string = []
         for (let j = 0; j < 12; j++) {
-            const noteSharp = standardTuning[i][j].replace(/\d/,"");
-            const noteFlat = standardTuningFlat[i][j].replace(/\d/,"");
+            const noteSharp = standardTuning[i][j]
+            const noteFlat = standardTuningFlat[i][j];
             const noteToInsert = noteSharp === noteFlat ? noteSharp : `${noteSharp}/${noteFlat}`
             const cb = createNoteCheckbox(noteToInsert,j,i)
             string.push(cb.querySelector("input"))
@@ -57,7 +57,7 @@ initialzeIncludeNoteChecboxes();
 
 function includeNote(note) {
     iterateAllCheckboxes((cb) => {
-        if(cb.getAttribute("data-note") === note) {
+        if(cb.getAttribute("data-note").replace(/\d/g,"") === note) {
             cb.checked = true;
         }
     })
