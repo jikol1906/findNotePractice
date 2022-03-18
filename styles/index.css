@@ -67,6 +67,10 @@
             transform: translateX(-50%);
         }
 
+        #time-between-container {
+            grid-area: tl;
+        }
+
         fieldset {
             border:none;
             justify-self: stretch;
@@ -94,6 +98,7 @@
             display: grid;
             gap:2rem;
             min-width: 0;
+            grid-area:cb;
             overflow: auto;   
         }
 
@@ -114,6 +119,10 @@
             cursor: pointer;
             padding:.5rem;
             flex:1;
+        }
+
+        #include-notes-buttons {
+            grid-area:bt;
         }
 
 

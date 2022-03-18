@@ -37,6 +37,10 @@ html {
 
 #menu {
     display: grid;
+    grid-template-areas: 
+        "sb tl"
+        "cb cb"
+        "bt bt";
     padding:4rem .5rem;
     margin: auto 0;
     margin: auto;
@@ -70,7 +74,8 @@ html {
 
 #start-button {
     font-size: 2em;
-    letter-spacing: 4px;    
+    letter-spacing: 4px;   
+    grid-area:sb; 
     font-family: inherit;
     -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;

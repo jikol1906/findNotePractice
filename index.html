@@ -30,10 +30,10 @@
 
     <button id="stop-button">&times</button>
     <div id="menu">
-        <div class="menu-top">
+        <button id="start-button">Start</button>
+        <div id="time-between-container" class="menu-top">
             <p class="text-lg" id="time-between">Time between notes: 5.0 seconds</p>
             <input type="range" min="10" max="100" value="50" step="5" class="slider" id="range">
-            <button id="start-button">Start</button>
         </div>
         <fieldset id="notes-included-checkboxes">
             <legend class="text-lg">Notes to include</legend>
@@ -41,7 +41,7 @@
                 
             </div>
         </fieldset>  
-        <div class="row">
+        <div id="include-notes-buttons" class="row">
             <button onclick="includeNote('A')">A</button>
             <button onclick="includeNote('B')">B</button>
             <button onclick="includeNote('C')">C</button>
