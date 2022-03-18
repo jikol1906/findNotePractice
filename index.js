@@ -80,9 +80,8 @@ function includeString(number) {
 }
 
 function includeFret(number) {
-    for (let i = 0; i < array.length; i++) {
-        const element = array[i];
-        
+    for (let i = 0; i < strings.length; i++) {
+        strings[i][number].checked =  true;
     }
 }
 
