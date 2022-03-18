@@ -24,7 +24,7 @@ function createNoteCheckbox(note,x,y) {
     
     const cb = document.createElement("input")
     cb.setAttribute("type","checkbox")
-    cb.setAttribute("checked","true")
+    // cb.setAttribute("checked","true")
     cb.setAttribute("data-x",x)
     cb.setAttribute("data-y",y)
     
@@ -44,7 +44,12 @@ for (let i = 0; i < 6; i++) {
     }
 }
 
-
+function includeString(number) {
+    const inputs = includeNotesCheckboxes.querySelectorAll("input")
+    for (let i = (number*12) ; i < (number*12+12); i++) {
+        inputs[i].checked = true
+    }
+}
 
 
 const synth = new Tone.Synth().toDestination();
