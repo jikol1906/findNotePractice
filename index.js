@@ -18,36 +18,51 @@ const game = document.getElementById("game");
 const staffNote = document.getElementById("staff-note");
 const ledgerLines = Array.from(document.getElementsByClassName("ledger-line"));
 const includeNotesCheckboxes = document.querySelector("#notes-included-checkboxes .label-wrapper")
+const strings = [];
 
-function createNoteCheckbox(note,x,y) {
-    const l = document.createElement("label")
+function initialzeIncludeNoteChecboxes() {
+    function createNoteCheckbox(note,x,y) {
+        const l = document.createElement("label")
+        
+        const cb = document.createElement("input")
+        cb.setAttribute("type","checkbox")
+        // cb.setAttribute("checked","true")
+        cb.setAttribute("data-x",x)
+        cb.setAttribute("data-y",y)
+        
+        const s = document.createElement("span")
+        s.innerText = note
+        
+        l.appendChild(cb)
+        l.appendChild(s)
     
-    const cb = document.createElement("input")
-    cb.setAttribute("type","checkbox")
-    // cb.setAttribute("checked","true")
-    cb.setAttribute("data-x",x)
-    cb.setAttribute("data-y",y)
-    
-    const s = document.createElement("span")
-    s.innerText = note
-    
-    l.appendChild(cb)
-    l.appendChild(s)
-
-    return l;
-}
-
-
-for (let i = 0; i < 6; i++) {
-    for (let j = 0; j < 12; j++) {
-        includeNotesCheckboxes.append(createNoteCheckbox(standardTuning[i][j].replace(/\d/,""),j,i))
+        return l;
+    }
+    for (let i = 0; i < 6; i++) {
+        const string = []
+        for (let j = 0; j < 12; j++) {
+            const cb = createNoteCheckbox(standardTuning[i][j].replace(/\d/,""),j,i)
+            string.push(cb.querySelector("input"))
+            includeNotesCheckboxes.append(cb)
+        }
+        strings.push(string)
     }
 }
 
+
+initialzeIncludeNoteChecboxes();
+
 function includeString(number) {
-    const inputs = includeNotesCheckboxes.querySelectorAll("input")
-    for (let i = (number*12) ; i < (number*12+12); i++) {
-        inputs[i].checked = true
+
+    for (let i = 0 ; i < 12; i++) {
+        strings[number][i].checked = true
+    }
+}
+
+function includeFret(number) {
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        
     }
 }
 
