@@ -69,12 +69,10 @@
 
         #time-between-container {
             grid-area: tl;
-        }
-
-        fieldset {
-            border:none;
             justify-self: stretch;
         }
+
+
 
         .fieldset-container {
             justify-self: stretch;
@@ -98,10 +96,20 @@
 
         #notes-included-checkboxes {
             display: grid;
+            position: sticky;
+            justify-self: stretch;
+            background-color: rgb(51, 51, 51);
+            top:0;
+            padding-top:1rem;
             gap:2rem;
-            min-width: 0;
             grid-area:cb;
+        }
+        
+        #notes-included-checkboxes fieldset {
+            border:none;
             overflow: auto;   
+            min-width: 0;
+            justify-self: stretch;
         }
 
         #notes-included-checkboxes label input[type="checkbox"] {
