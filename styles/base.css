@@ -19,19 +19,13 @@ button {
     color: white;
     padding: 1.1em 3em;
     white-space: nowrap;
-    text-transform: uppercase;
 }
 
 html {
-    background-color: #0ea389;
+    background-color: rgb(51, 51, 51);
     font-family: 'Nanum Gothic', sans-serif;
     height: 100%;
     color: white;
-    background: #02AAB0;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #00CDAC, #02AAB0);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #00CDAC, #02AAB0);
 
 }
 
@@ -99,7 +93,6 @@ html {
     -webkit-appearance: none;
     border-radius: 50px;
     width: 100%;
-    max-width: 400px;
     height: 1.56em;
     background: #d3d3d3;
     outline: none;

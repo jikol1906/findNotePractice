@@ -114,12 +114,15 @@ range.value = 50;
 startButton.addEventListener('click', _ => {
     menu.style.display = 'none';
     game.style.display = 'block';
+    
+    const stringNoteMap = generateStringNoteMap();
+    
     stopButton.style.display = 'block';
     Tone.start().then(() => {
         intervalId = setInterval(() => {
-            nextNoteAsLetter()
+            nextNoteAsLetter(stringNoteMap)
         }, timeBetweenInSeconds)
-        nextNoteAsLetter()
+        nextNoteAsLetter(stringNoteMap)
     })
 
 })
@@ -163,9 +166,11 @@ function animateTimeLeft() {
 }
 
 
-function nextNoteAsLetter() {
-    const stringNumber = getRandomIntInclusive(0, 5);
-    const note = getRandomNote(stringNumber);
+function nextNoteAsLetter(stringNoteMap) {
+    const possibleStrings = Object.keys(stringNoteMap);
+    const chosenString = possibleStrings[getRandomIntInclusive(0,possibleStrings.length-1)];
+    const availableNotes = stringNoteMap[chosenString];
+    const note = getRandomNote(availableNotes)
     animateTimeLeft()
     synth.triggerAttackRelease(note, "4n");
 
@@ -175,17 +180,22 @@ function nextNoteAsLetter() {
     stringSpan.classList.add('highlight')
 
     noteSpan.append(note.replace(/\d+/g,""))
-    stringSpan.append(getStringNumber(stringNumber+1))
+    stringSpan.append(getStringNumber(+chosenString+1))
     notes.innerHTML = '';
     notes.append(noteSpan,' on the ', stringSpan, ' string')
 }
 
 
 
-function getRandomNote(sNumber) {
-    const flat = getRandomBoolean();
-    const notes = flat ? standardTuningFlat[sNumber] : standardTuning[sNumber]
-    return notes[getRandomIntInclusive(0, notes.length - 1)]
+function getRandomNote(availablenotes) {
+    let note = availablenotes[getRandomIntInclusive(0,availablenotes.length-1)]
+    if(note.includes("/")) {
+        const flat = getRandomBoolean();
+        const [flatNote,sharpNote] = note.split("/");
+        note = flat ? flatNote : sharpNote;
+    }
+    return note
+    
 }
 
 function getStringNumber(number) {
