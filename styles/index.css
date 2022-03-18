@@ -123,6 +123,10 @@
 
         #include-notes-buttons {
             grid-area:bt;
+            display: grid;
+            justify-self: stretch;
+            gap:1rem;
+            grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
         }
 
 
