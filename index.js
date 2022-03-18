@@ -15,6 +15,7 @@ const timeBetween = document.getElementById("time-between");
 const timeLeft = document.getElementById("time-left");
 const menu = document.getElementById("menu");
 const game = document.getElementById("game");
+const stickToScreenCb = document.getElementById("stick-to-screen-checkbox")
 const staffNote = document.getElementById("staff-note");
 const ledgerLines = Array.from(document.getElementsByClassName("ledger-line"));
 const includeNotesCheckboxes = document.querySelector("#notes-included-checkboxes .label-wrapper")
@@ -110,6 +111,15 @@ stopButton.addEventListener('click', _ => {
     game.style.display = '';
     stopButton.style.display = 'none';
     clearInterval(intervalId);
+})
+
+stickToScreenCb.addEventListener("change",e => {
+    console.log('here');
+    if(!e.target.checked) {
+        document.getElementById("notes-included-checkboxes").classList.remove("stick-to-top")
+    } else {
+        document.getElementById("notes-included-checkboxes").classList.add("stick-to-top")
+    }
 })
 
 range.addEventListener('input', e => {

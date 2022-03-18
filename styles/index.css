@@ -6,6 +6,10 @@
 
         }
         
+        .stick-to-top {
+            position: sticky;
+            top:0;
+        }
         
         .staff {
             --line-distance: 1.4rem;
@@ -101,11 +105,9 @@
 
         #notes-included-checkboxes {
             display: grid;
-            position: sticky;
             justify-self: stretch;
             background-color: rgb(51, 51, 51);
-            top:0;
-            padding-top:1rem;
+            padding:1rem 0;
             gap:2rem;
             grid-area:cb;
         }
@@ -117,7 +119,15 @@
             justify-self: stretch;
         }
 
-        #notes-included-checkboxes label input[type="checkbox"] {
+        #stick-to-screen-checkbox {
+            display: grid;
+            gap:10px;
+            grid-auto-flow: column;
+            align-items: center;
+            justify-self: start;
+        }
+
+        .label-wrapper input[type="checkbox"] {
             display:none;
         }
         #notes-included-checkboxes label input[type="checkbox"]:checked + span {
