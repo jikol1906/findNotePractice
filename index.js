@@ -114,18 +114,22 @@ range.value = 50;
 startButton.addEventListener('click', _ => {
     
     const stringNoteMap = generateStringNoteMap();
-    generateNoteSequence(stringNoteMap)
-    if(Object.keys(stringNoteMap).length === 0) {
-        alert("must choose at least one note")
+    const seq = generateNoteSequence(stringNoteMap);
+    
+    if(Object.keys(stringNoteMap).length < 2) {
+        alert("must choose at least two notes")
     } else {
         menu.style.display = 'none';
         game.style.display = 'block';
         stopButton.style.display = 'block';
         Tone.start().then(() => {
             intervalId = setInterval(() => {
-                nextNoteAsLetter(stringNoteMap)
+                
+                animateTimeLeft()
+                insertNextNote(seq.pop())
             }, timeBetweenInSeconds)
-            nextNoteAsLetter(stringNoteMap)
+            animateTimeLeft()
+            insertNextNote(seq.pop())
         })
     }
 
@@ -221,9 +225,10 @@ function generateNoteSequence(stringNoteMap){
             }
 
             notes.push({
+                note:note.replace(/\d/g,""),
                 noteWithOctave:note,
                 fullname:n,
-                onString:k
+                onString:+k+1
             })
         })
     }
