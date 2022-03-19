@@ -115,8 +115,7 @@ startButton.addEventListener('click', _ => {
     
     const stringNoteMap = generateStringNoteMap();
     let seq = generateNoteSequence(stringNoteMap);
-    let lastNote = seq[seq.length-1]
-    
+    let lastNoteOfCurrentSequence = seq[0]
     if(seq.length < 2) {
         alert("must choose at least two notes")
     } else {
@@ -125,17 +124,21 @@ startButton.addEventListener('click', _ => {
         stopButton.style.display = 'block';
         Tone.start().then(() => {
             intervalId = setInterval(() => {
-                //Generate new sequence 
+                animateTimeLeft()
+                insertNextNote(seq.pop())
+
+                //Generate new sequence if old one is empty
                 if(seq.length === 0) {
                     seq = generateNoteSequence(stringNoteMap);
                     //Make sure same note won't be played twice
-                    if(seq[0].fullname === lastNote.fullname) {
-                        swapArrayValues(seq,0,1)
+                    const firstNoteInNewSequence = seq[seq.length-1].fullname;
+                    const lastNoteInOldSequence = lastNoteOfCurrentSequence.fullname;
+                    if(firstNoteInNewSequence === lastNoteInOldSequence) {
+                        swapArrayValues(seq,seq.length-1,seq.length-2)
                     }
-                    lastNote = seq[seq.length-1]
+                    lastNoteOfCurrentSequence = seq[0]
                 }
-                animateTimeLeft()
-                insertNextNote(seq.pop())
+
             }, timeBetweenInSeconds)
             animateTimeLeft()
             insertNextNote(seq.pop())
