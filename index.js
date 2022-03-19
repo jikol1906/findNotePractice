@@ -145,6 +145,7 @@ function insertNextNote(note) {
     noteSpan.classList.add('highlight')
     stringSpan.classList.add('highlight')
 
+    synth.triggerAttackRelease(note.noteWithOctave, "4n");
     
     noteSpan.append(note.note);
     stringSpan.append(note.onString);
@@ -220,7 +221,7 @@ function generateNoteSequence(stringNoteMap){
             }
 
             notes.push({
-                note,
+                noteWithOctave:note,
                 fullname:n,
                 onString:k
             })
