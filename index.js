@@ -200,26 +200,6 @@ function animateTimeLeft() {
     gsap.fromTo(timeLeft, {scaleX: 1}, {scaleX: 0, ease:"none", duration: timeBetweenInSeconds/1000});
 }
 
-
-function nextNoteAsLetter(stringNoteMap) {
-    const possibleStrings = Object.keys(stringNoteMap);
-    const chosenString = possibleStrings[getRandomIntInclusive(0,possibleStrings.length-1)];
-    const availableNotes = stringNoteMap[chosenString];
-    const note = getRandomNote(availableNotes)
-    animateTimeLeft()
-    synth.triggerAttackRelease(note, "4n");
-
-    const noteSpan = document.createElement("span");
-    const stringSpan = document.createElement("span");
-    noteSpan.classList.add('highlight')
-    stringSpan.classList.add('highlight')
-
-    noteSpan.append(note.replace(/\d+/g,""))
-    stringSpan.append(getStringNumber(+chosenString+1))
-    notes.innerHTML = '';
-    notes.append(noteSpan,' on the ', stringSpan, ' string')
-}
-
 function generateNoteSequence(stringNoteMap){
     const notes = [];
 
@@ -243,19 +223,6 @@ function generateNoteSequence(stringNoteMap){
     }
 
     return shuffle(notes);
-}
-
-
-
-function getRandomNote(availablenotes) {
-    let note = availablenotes[getRandomIntInclusive(0,availablenotes.length-1)]
-    if(note.includes("/")) {
-        const flat = getRandomBoolean();
-        const [flatNote,sharpNote] = note.split("/");
-        note = flat ? flatNote : sharpNote;
-    }
-    return note
-    
 }
 
 function getStringNumber(number) {
