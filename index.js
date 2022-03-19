@@ -114,7 +114,8 @@ range.value = 50;
 startButton.addEventListener('click', _ => {
     
     const stringNoteMap = generateStringNoteMap();
-    const seq = generateNoteSequence(stringNoteMap);
+    let seq = generateNoteSequence(stringNoteMap);
+    let lastNote = seq[seq.length-1]
     
     if(seq.length < 2) {
         alert("must choose at least two notes")
@@ -124,7 +125,15 @@ startButton.addEventListener('click', _ => {
         stopButton.style.display = 'block';
         Tone.start().then(() => {
             intervalId = setInterval(() => {
-                
+                //Generate new sequence 
+                if(seq.length === 0) {
+                    seq = generateNoteSequence(stringNoteMap);
+                    //Make sure same note won't be played twice
+                    if(seq[0].fullname === lastNote.fullname) {
+                        swapArrayValues(seq,0,1)
+                    }
+                    lastNote = seq[seq.length-1]
+                }
                 animateTimeLeft()
                 insertNextNote(seq.pop())
             }, timeBetweenInSeconds)
@@ -161,7 +170,7 @@ function insertNextNote(note) {
 }
 
 stickToScreenCb.addEventListener("change",e => {
-    console.log('here');
+    
     if(!e.target.checked) {
         document.getElementById("notes-included-checkboxes").classList.remove("stick-to-top")
     } else {
