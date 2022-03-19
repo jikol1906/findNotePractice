@@ -138,6 +138,23 @@ stopButton.addEventListener('click', _ => {
     clearInterval(intervalId);
 })
 
+function insertNextNote(note) {
+    
+    const noteSpan = document.createElement("span");
+    const stringSpan = document.createElement("span");
+    noteSpan.classList.add('highlight')
+    stringSpan.classList.add('highlight')
+
+    
+    noteSpan.append(note.note);
+    stringSpan.append(note.onString);
+
+    notes.innerHTML = '';
+    notes.append(noteSpan,' on the ', stringSpan, ' string')
+
+
+}
+
 stickToScreenCb.addEventListener("change",e => {
     console.log('here');
     if(!e.target.checked) {
