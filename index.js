@@ -116,7 +116,7 @@ startButton.addEventListener('click', _ => {
     const stringNoteMap = generateStringNoteMap();
     const seq = generateNoteSequence(stringNoteMap);
     
-    if(Object.keys(stringNoteMap).length < 2) {
+    if(seq.length < 2) {
         alert("must choose at least two notes")
     } else {
         menu.style.display = 'none';
