@@ -114,6 +114,7 @@ range.value = 50;
 startButton.addEventListener('click', _ => {
     
     const stringNoteMap = generateStringNoteMap();
+    generateNoteSequence(stringNoteMap)
     if(Object.keys(stringNoteMap).length === 0) {
         alert("must choose at least one note")
     } else {
@@ -188,6 +189,30 @@ function nextNoteAsLetter(stringNoteMap) {
     notes.append(noteSpan,' on the ', stringSpan, ' string')
 }
 
+function generateNoteSequence(stringNoteMap){
+    const notes = [];
+
+    for(k in stringNoteMap) {
+        const string = stringNoteMap[k];
+        string.forEach(n => {
+            let note = n;
+            if(n.includes("/")) {
+                const flat = getRandomBoolean();
+                const [flatNote,sharpNote] = n.split("/");
+                note = flat ? flatNote : sharpNote;   
+            }
+
+            notes.push({
+                note,
+                fullname:n,
+                onString:k
+            })
+        })
+    }
+
+    return shuffle(notes);
+}
+
 
 
 function getRandomNote(availablenotes) {
@@ -213,6 +238,24 @@ function getStringNumber(number) {
             return number + 'th'
     }
 }
+
+function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+  }
 
 
 
