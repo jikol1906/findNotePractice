@@ -257,6 +257,12 @@ function shuffle(array) {
     return array;
   }
 
+  function swapArrayValues(arr, indexA, indexB) {
+    var temp = arr[indexA];
+    arr[indexA] = arr[indexB];
+    arr[indexB] = temp;
+  };
+
 
 
 
