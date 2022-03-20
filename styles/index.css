@@ -116,6 +116,10 @@
             gap:2rem;
             grid-area:cb;
         }
+
+        #stick-to-screen-checkbox {
+            white-space: nowrap;
+        }
         
         #notes-included-checkboxes fieldset {
             border:none;
