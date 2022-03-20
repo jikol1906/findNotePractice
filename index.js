@@ -200,7 +200,7 @@ function getRandomBoolean() {
 }
 
 function animateTimeLeft() {
-    gsap.fromTo(timeLeft, {scaleX: 1}, {scaleX: 0, ease:"none", duration: timeBetweenInSeconds/1000});
+    gsap.fromTo(timeLeft, {scaleX: 1,opacity:1}, {scaleX: 0, opacity:.2, ease:"none", duration: timeBetweenInSeconds/1000});
 }
 
 function generateNoteSequence(stringNoteMap){
