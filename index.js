@@ -74,6 +74,9 @@ function iterateAllCheckboxes(fn) {
 function clearAllSelectedNotes() {
    iterateAllCheckboxes(cp => cp.checked = false) 
 }
+function selectAllNotes() {
+   iterateAllCheckboxes(cp => cp.checked = true) 
+}
 
 function includeString(number) {
     strings[number].forEach(cb => cb.checked = true)    

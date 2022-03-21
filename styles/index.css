@@ -149,26 +149,32 @@
         }
 
         .button-containers {
-            display: flex;
+            display: grid;
             justify-self: stretch;
-            flex-wrap: wrap;
+            grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
             grid-column: 1/-1;
             
         }
 
+        .wrapper {
+            padding:1rem;
+            flex-grow: 1;
+        }
+
+        .wrapper h2 {
+            margin-bottom: .5rem;   
+        }
+
         .button-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            align-content: center;
             flex-wrap: wrap;
-            flex:1;
+            
             gap:1rem;
-            padding:1rem;
         }
 
         .button-container > button {
-            padding:.3rem .5rem;
+            padding:.5rem .8rem;
+            font-size: 1rem;
         }
 
         .button-container div {
