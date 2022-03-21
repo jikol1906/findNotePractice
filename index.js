@@ -13,7 +13,6 @@ const timeBetween = document.getElementById("time-between");
 const timeLeft = document.getElementById("time-left");
 const menu = document.getElementById("menu");
 const game = document.getElementById("game");
-const stickToScreenCb = document.getElementById("stick-to-screen-checkbox")
 const staffNote = document.getElementById("staff-note");
 const ledgerLines = Array.from(document.getElementsByClassName("ledger-line"));
 const includeNotesCheckboxes = document.querySelector("#notes-included-checkboxes .label-wrapper")
@@ -172,14 +171,6 @@ function insertNextNote(note) {
 
 }
 
-stickToScreenCb.addEventListener("change",e => {
-    
-    if(!e.target.checked) {
-        document.getElementById("notes-included-checkboxes").classList.remove("stick-to-top")
-    } else {
-        document.getElementById("notes-included-checkboxes").classList.add("stick-to-top")
-    }
-})
 
 range.addEventListener('input', e => {
     let value = e.target.value / 10;

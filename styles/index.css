@@ -117,9 +117,7 @@
             grid-area:cb;
         }
 
-        #stick-to-screen-checkbox {
-            white-space: nowrap;
-        }
+  
         
         #notes-included-checkboxes fieldset {
             border:none;
@@ -128,19 +126,8 @@
             justify-self: stretch;
         }
 
-        #stick-to-screen-checkbox {
-            display: grid;
-            gap:10px;
-            grid-auto-flow: column;
-            align-items: center;
-            justify-self: start;
-        }
 
-        @media only screen and (max-height: 400px) {
-            #stick-to-screen-checkbox {
-                display: none;
-            }
-        }
+
 
         .label-wrapper input[type="checkbox"] {
             display:none;
