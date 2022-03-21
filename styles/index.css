@@ -148,12 +148,33 @@
             flex:1;
         }
 
-        .button-container {
-            display: grid;
-            gap:1rem;
-            justify-items: center;
-            grid-column: 1/-1;
+        .button-containers {
+            display: flex;
             justify-self: stretch;
+            flex-wrap: wrap;
+            grid-column: 1/-1;
+            
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            flex-wrap: wrap;
+            flex:1;
+            gap:1rem;
+            padding:1rem;
+        }
+
+        .button-container > button {
+            padding:.3rem .5rem;
+        }
+
+        .button-container div {
+            display: flex;
+            flex-wrap: wrap;
+            gap:1rem;
         }
 
         .button-grid {
