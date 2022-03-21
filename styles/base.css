@@ -17,7 +17,7 @@ button {
     background-color: #00a0ff;
     border-radius: 0.625em;
     color: white;
-    padding: 1.1em 3em;
+    
     white-space: nowrap;
 }
 
@@ -80,6 +80,7 @@ html {
     font-size: 2em;
     letter-spacing: 4px;   
     grid-area:sb; 
+    padding:2rem 3rem;
     font-family: inherit;
     -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
