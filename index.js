@@ -71,6 +71,10 @@ function iterateAllCheckboxes(fn) {
     })
 }
 
+function includeAllNaturalNotes() {
+    "ABCDEFG".split("").forEach(includeNote)
+}
+
 function clearAllSelectedNotes() {
    iterateAllCheckboxes(cp => cp.checked = false) 
 }
