@@ -63,6 +63,14 @@ function includeNote(note) {
 
 }
 
+function removeNotes(...notes) {
+    iterateAllCheckboxes(cb => {
+        if(notes.includes(cb.getAttribute("data-note").replace(/\d/g,""))) {
+            cb.checked = false
+        }
+    })
+}
+
 function iterateAllCheckboxes(fn) {
     strings.forEach(s => {
         s.forEach(cp => {
