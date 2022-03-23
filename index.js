@@ -83,6 +83,13 @@ function includeAllNaturalNotes() {
     "ABCDEFG".split("").forEach(includeNote)
 }
 
+function includeAllSharpsAndFlats() {
+    selectAllNotes()
+    removeNotes(..."ABCDEFG".split(""))
+}
+
+
+
 function clearAllSelectedNotes() {
    iterateAllCheckboxes(cp => cp.checked = false) 
 }
