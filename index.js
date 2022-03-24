@@ -17,6 +17,7 @@ const staffNote = document.getElementById("staff-note");
 const ledgerLines = Array.from(document.getElementsByClassName("ledger-line"));
 const includeNotesCheckboxes = document.querySelector("#notes-included-checkboxes .label-wrapper")
 const strings = [];
+let mode;
 
 function initialzeIncludeNoteChecboxes() {
     function createNoteCheckbox(note,x,y) {
@@ -137,6 +138,7 @@ startButton.addEventListener('click', _ => {
     const stringNoteMap = generateStringNoteMap();
     let seq = generateNoteSequence(stringNoteMap);
     let lastNoteOfCurrentSequence = seq[0]
+    let mode = document.querySelector("input[name='mode']:checked").value
     if(seq.length < 2) {
         alert("must choose at least two notes")
     } else {
