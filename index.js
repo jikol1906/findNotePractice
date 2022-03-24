@@ -220,9 +220,20 @@ function generateNoteSequence(stringNoteMap){
         string.forEach(n => {
             let note = n;
             if(n.includes("/")) {
-                const flat = getRandomBoolean();
                 const [sharpNote,flatNote] = n.split("/");
-                note = flat ? flatNote : sharpNote;   
+                switch(mode) {
+                    case 'alternate':
+                        const flat = getRandomBoolean();
+                        note = flat ? flatNote : sharpNote;   
+                        break;
+                    case 'sharps':
+                        note = sharpNote;
+                        break;
+                    case 'flats':
+                        note = flatNote;
+                        break;
+                    
+                }
             }
 
             notes.push({
