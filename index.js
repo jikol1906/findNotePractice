@@ -55,9 +55,9 @@ function initialzeIncludeNoteChecboxes() {
 
 initialzeIncludeNoteChecboxes();
 
-function includeNote(note) {
+function includeNote(...notes) {
     iterateAllCheckboxes((cb) => {
-        if(cb.getAttribute("data-note").replace(/\d/g,"") === note) {
+        if(notes.includes(cb.getAttribute("data-note").replace(/\d/g,""))) {
             cb.checked = true;
         }
     })
@@ -81,12 +81,11 @@ function iterateAllCheckboxes(fn) {
 }
 
 function includeAllNaturalNotes() {
-    "ABCDEFG".split("").forEach(includeNote)
+    includeNote(..."ABCDEFG".split(""))
 }
 
 function includeAllSharpsAndFlats() {
-    selectAllNotes()
-    removeNotes(..."ABCDEFG".split(""))
+    includeNote("A#/Bb","C#/Db","D#/Eb","F#/Gb","G#/Ab")
 }
 
 
@@ -138,7 +137,7 @@ startButton.addEventListener('click', _ => {
     const stringNoteMap = generateStringNoteMap();
     let seq = generateNoteSequence(stringNoteMap);
     let lastNoteOfCurrentSequence = seq[0]
-    let mode = document.querySelector("input[name='mode']:checked").value
+    mode = document.querySelector("input[name='mode']:checked").value
     if(seq.length < 2) {
         alert("must choose at least two notes")
     } else {
@@ -222,7 +221,7 @@ function generateNoteSequence(stringNoteMap){
             let note = n;
             if(n.includes("/")) {
                 const flat = getRandomBoolean();
-                const [flatNote,sharpNote] = n.split("/");
+                const [sharpNote,flatNote] = n.split("/");
                 note = flat ? flatNote : sharpNote;   
             }
 
