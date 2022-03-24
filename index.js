@@ -18,6 +18,7 @@ const ledgerLines = Array.from(document.getElementsByClassName("ledger-line"));
 const includeNotesCheckboxes = document.querySelector("#notes-included-checkboxes .label-wrapper")
 const strings = [];
 let mode;
+let playSound;
 
 function initialzeIncludeNoteChecboxes() {
     function createNoteCheckbox(note,x,y) {
@@ -135,6 +136,7 @@ range.value = 50;
 startButton.addEventListener('click', _ => {
     
     mode = document.querySelector("input[name='mode']:checked").value
+    playSound = document.querySelector("input[name='includenote']").checked
     const stringNoteMap = generateStringNoteMap();
     let seq = generateNoteSequence(stringNoteMap);
     let lastNoteOfCurrentSequence = seq[0]
@@ -183,7 +185,9 @@ function insertNextNote(note) {
     noteSpan.classList.add('highlight')
     stringSpan.classList.add('highlight')
 
-    synth.triggerAttackRelease(note.noteWithOctave, "4n");
+    if(playSound) {
+        synth.triggerAttackRelease(note.noteWithOctave, "4n");
+    }
     
     noteSpan.append(note.note);
     stringSpan.append(note.onString);
