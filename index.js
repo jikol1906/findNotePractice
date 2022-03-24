@@ -134,10 +134,10 @@ range.value = 50;
 
 startButton.addEventListener('click', _ => {
     
+    mode = document.querySelector("input[name='mode']:checked").value
     const stringNoteMap = generateStringNoteMap();
     let seq = generateNoteSequence(stringNoteMap);
     let lastNoteOfCurrentSequence = seq[0]
-    mode = document.querySelector("input[name='mode']:checked").value
     if(seq.length < 2) {
         alert("must choose at least two notes")
     } else {
