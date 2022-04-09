@@ -27,26 +27,10 @@
             align-items: center;
         }
 
-        .row {
-            display: flex;
-            flex-direction: column;
-        }
 
-        .row > * {
-            flex:1;
-            margin-bottom:1rem;
-        }
 
         
-        @media (min-width:900px) {            
-            .row > * + * {
-                margin-left:1rem;
-            }
 
-            .row {
-                flex-direction: row;
-            }
-        }
 
         .text-lg {
             font-size:clamp(1rem,3vw,1.6rem);
