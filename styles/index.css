@@ -204,6 +204,14 @@
             gap:1rem;
         }
 
+        .options-container {
+            display: grid;
+            row-gap:1rem;
+            column-gap:2rem;
+            grid-auto-flow: column;
+            grid-template-rows: repeat(3,auto);
+        }
+
         .button-container > button {
             padding:.5rem .8rem;
             border-radius: 999px;
