@@ -179,6 +179,7 @@
             justify-self: stretch;
             grid-template-columns: 1fr 1fr;
             grid-column: 1/-1;
+            gap:2rem;
             
         }
 
@@ -188,9 +189,6 @@
             }
         }
 
-        .wrapper {
-            padding:1rem;
-        }
 
         .wrapper h2 {
             margin-bottom: .5rem;   
