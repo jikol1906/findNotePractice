@@ -33,7 +33,8 @@
 
 
         .h2 {
-            font-size:clamp(1.1rem,3vw,1.6rem);
+            font-size:clamp(1.1rem,3.5vw,1.6rem);
+            margin-bottom: 1.2em;
         }
         .text-md {
             font-size:1.5rem;
