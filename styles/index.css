@@ -33,7 +33,7 @@
 
 
         .text-lg {
-            font-size:clamp(1rem,3vw,1.6rem);
+            font-size:clamp(1.3rem,3vw,1.6rem);
         }
         .text-md {
             font-size:1.5rem;
