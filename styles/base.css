@@ -43,7 +43,6 @@ html {
     max-width: 1140px;
     flex: 1;
     justify-items: center;
-    font-size: min(3vw,1rem);
     gap: 4em;
 }
 
