@@ -187,7 +187,7 @@
 
         .options-container {
             display: grid;
-            row-gap:1rem;
+            row-gap:.6rem;
             column-gap:2rem;
             grid-auto-flow: column;
             grid-template-rows: repeat(3,auto);
