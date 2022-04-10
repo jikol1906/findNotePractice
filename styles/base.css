@@ -60,7 +60,7 @@ html {
 .menu-top {
     display: grid;
     justify-items: center;
-    gap:2rem;
+    
 }
 
 #stop-button {
