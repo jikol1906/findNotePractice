@@ -190,7 +190,7 @@ function insertNextNote(note) {
     }
     
     noteSpan.append(note.note);
-    stringSpan.append(note.onString);
+    stringSpan.append(getStringNumber(note.onString));
 
     notes.innerHTML = '';
     notes.append(noteSpan,' on the ', stringSpan, ' string')
