@@ -75,7 +75,7 @@ html {
 }
 
 #stop-button:hover {
-    color: white;
+    opacity: 1;
 }
 
 #start-button {
