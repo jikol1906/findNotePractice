@@ -65,18 +65,7 @@ function nextNote() {
     placeNoteOnStaffAtPosition(randNote.position)
 }
 
-function getStringNumber(number) {
-    switch (number) {
-        case 1:
-            return '1st'
-        case 2:
-            return '2nd'
-        case 3:
-            return '3rd'
-        default:
-            return number + 'th'
-    }
-}
+
 
 function placeLedgerLines(position) {
     ledgerLines.forEach(l => l.style.visibility = 'hidden')
